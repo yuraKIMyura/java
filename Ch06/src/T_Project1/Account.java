@@ -18,6 +18,4 @@ public class Account {
 		return "Account [name=" + name + ", ssn=" + ssn + ", tel=" + tel + ", balance=" + balance + "]";
 	}
 	
-	
-	
 }
