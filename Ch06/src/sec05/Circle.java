@@ -1,4 +1,4 @@
-//240110 Class 객체 생성 및 활용 
+//240110 PDF Class 객체 생성 및 활용 
 package sec05;
 
 public class Circle {
