@@ -1,5 +1,5 @@
 //240112 enum constructor를 사용해서 가격 불러오는 기능
-//이런 건 class나 interface로 하는 게 아님!
+//그런데 사실 책값처럼 변경될 수 있는 값들은 enum보다 class가 더 적합함
 
 package enumStudy;
 
