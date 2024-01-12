@@ -9,11 +9,15 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
-		int y = Integer.parseInt(scanner.next());
-		int x = Integer.parseInt(scanner.next());
-		int z = Integer.parseInt(scanner.next());
-		if(y>=1000 && y<=3000) {
-			System.out.println(y-543);
+		int A = Integer.parseInt(scanner.next());
+		int B = Integer.parseInt(scanner.next());
+		int C = Integer.parseInt(scanner.next());
+		if(A>=2 && B<=10000 && C<=10000) {
+			System.out.println((A+B)%C);
+			System.out.println(((A%C)+(B%C))%C);
+			System.out.println((A*B)%C);
+			System.out.println(((A%C)*(B%C))%C);
+			
 		}else {
 			System.out.println("");
 		}
