@@ -4,7 +4,7 @@ package sec05;
 
 public class Person {
 	
-	final static double apple;
+	static final double apple;
 	static double banana;
 	final String name;
 	
