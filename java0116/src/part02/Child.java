@@ -1,3 +1,4 @@
+//1 superclass constructor
 package part02;
 
 public class Child extends Parent{
