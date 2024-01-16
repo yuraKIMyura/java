@@ -1,3 +1,4 @@
+//1 getter setter
 package part01;
 
 public class AccountEx {

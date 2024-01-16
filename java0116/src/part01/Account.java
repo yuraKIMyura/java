@@ -1,4 +1,4 @@
-//240116 getter setter
+//1 getter setter
 package part01;
 
 public class Account {
