@@ -1,4 +1,5 @@
-//2 java GUI swing
+//2 java GUI swing 설정 방법 1
+//상속을 통해 JFrame을 다 내 것처럼 사용
 package part2.swing;
 
 import javax.swing.JFrame;
