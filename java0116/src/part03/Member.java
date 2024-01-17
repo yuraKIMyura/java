@@ -3,7 +3,9 @@
 //240117 14:30 worked on deposit/withdraw method
 package part03;
 
-public class Member {
+import java.io.Serializable;
+
+public class Member implements Serializable {
 	
 	private String name;
 	private String id;

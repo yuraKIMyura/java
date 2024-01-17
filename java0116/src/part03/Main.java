@@ -1,8 +1,13 @@
 //today's final challenge
-//TODO 240116 17:40 work on File Input/Output Stream
+//TODO->DONE 240116 17:40 work on File Input/Output Stream
 //240117 14:30 worked on deposit/withdraw method
 package part03;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,15 +17,19 @@ public class Main {
 	
 	static Scanner scanner = new Scanner(System.in);
 	static List<Member> memberList = new ArrayList<>();
+	static boolean isUpToDate = true;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 	
 		selectGeneralMenu();
 		
 	}
 	
 	
-	private static void selectGeneralMenu() {			
+	private static void selectGeneralMenu() throws IOException, ClassNotFoundException {			
+		
+		readFile();
+		
 		boolean isRunning = true;
 		while(isRunning) {
 			
@@ -36,14 +45,18 @@ public class Main {
 				break;
 				case 2: join();
 				break;
-				case 3: System.out.println("3.파일저장");
+				case 3: 
+					System.out.println("파일저장");
+					saveFile();
 				break;
-				case 4: System.out.println("4.파일읽기");
+				case 4: readFile();
 				break;
 				case 5: verifyMember();
 				break;
-				case 6: System.out.println("프로그램 종료");
-						isRunning = false;
+				case 6: 
+					saveFile();
+					System.out.println("프로그램 종료");
+					isRunning = false;
 				default:
 				break;
 			}//switch
@@ -65,10 +78,12 @@ public class Main {
 		String pw = scanner.nextLine();
 		Member member = new Member(name, id, pw);
 		memberList.add(member);
+		isUpToDate = false;
+		System.out.println("3.파일저장을 잊지 마세요!");
 		
 	}
 	
-	static void verifyMember() {
+	static void verifyMember() throws IOException {
 		
 		boolean isMember = false;
 		
@@ -96,7 +111,7 @@ public class Main {
 		}
 	}//method
 
-	static void selectAccountMenu(int index) {
+	static void selectAccountMenu(int index) throws IOException {
 		boolean isRunning = true;
 		while(isRunning) {
 			
@@ -114,8 +129,9 @@ public class Main {
 				break;
 				case 3: withdraw(index);
 				break;
-				case 4: System.out.println("프로그램 종료");
-						isRunning = false;
+				case 4: 
+					System.out.println("프로그램 종료");
+					isRunning = false;
 				default:
 				break;
 			}//switch
@@ -140,9 +156,33 @@ public class Main {
 		memberList.get(index).setBalance(amount, 'w');
 	}
 	
-	static void saveFile() {}
+	static void saveFile() throws IOException {
 	
-	static void readFile() {}
+		FileOutputStream fos = new FileOutputStream("C:/Users/admin/desktop/memberList.db");
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(memberList);
+		oos.flush();
+		oos.close();
+		System.out.println("파일저장완료");
+		isUpToDate=true;
+		
+	}
+	
+	static void readFile() throws IOException, ClassNotFoundException {
+		if(!isUpToDate) {
+			System.out.println("3.파일저장을 먼저 실행해주세요.");
+		}else {
+			System.out.println("파일읽기");
+			FileInputStream fis = new FileInputStream("C:/Users/admin/desktop/memberList.db");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			memberList = (List<Member>) ois.readObject();
+			for(Member m : memberList) {
+				System.out.println(m);
+			}
+			ois.close();
+			System.out.println("파일읽기완료");
+		}
+	}
 	
 	
 
