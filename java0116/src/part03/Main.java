@@ -111,7 +111,7 @@ public class Main {
 				break;
 				case 2: deposit(index);
 				break;
-				case 3: System.out.println("3.출금");
+				case 3: withdraw(index);
 				break;
 				case 4: System.out.println("프로그램 종료");
 						isRunning = false;
@@ -122,17 +122,21 @@ public class Main {
 	}	
 	
 	static void checkBalance(int index) {
-		System.out.println(memberList.get(index).getBalance());
+		System.out.print("현재 잔고: ");
+		System.out.print(memberList.get(index).getBalance());
+		System.out.print("원\n");
 	}
 	
 	static void deposit(int index) {
+		System.out.println("예금액을 입력해주세요: ");
 		int amount = Integer.parseInt(scanner.nextLine());
-		memberList.get(index).setBalance(amount);
+		memberList.get(index).setBalance(amount, 'd');
 	}
 	
 	static void withdraw(int index) {
+		System.out.println("출금액을 입력해주세요: ");
 		int amount = Integer.parseInt(scanner.nextLine());
-		memberList.get(index).setBalance(amount);
+		memberList.get(index).setBalance(amount, 'w');
 	}
 	
 	static void saveFile() {}
