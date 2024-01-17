@@ -11,6 +11,7 @@ public class ChildEx {
 		Parent parent = child;
 		parent.method1();
 		parent.method2();
+		//parent.method3();
 		
 	}
 
