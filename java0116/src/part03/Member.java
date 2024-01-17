@@ -1,5 +1,6 @@
 //today's final challenge
-//240116 17:40 work on setBalance method
+//TODO->DONE 240116 17:40 work on setBalance method
+//240117 14:30 worked on deposit/withdraw method
 package part03;
 
 public class Member {
