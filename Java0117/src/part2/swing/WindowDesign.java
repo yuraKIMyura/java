@@ -39,7 +39,7 @@ public class WindowDesign extends JFrame {
 		name1.setSize(WIDTH_L-20, HEIGHT);
 		con.add(name1);
 		
-		JTextField name2 = new JTextField("성이름");
+		JTextField name2 = new JTextField();
 		name2.setLocation(x+groupTotal, y1);
 		name2.setSize(WIDTH_TF, HEIGHT);
 		con.add(name2);
@@ -52,7 +52,7 @@ public class WindowDesign extends JFrame {
 		id1.setSize(WIDTH_L-10, HEIGHT);
 		con.add(id1);
 		
-		JTextField id2 = new JTextField("아이디");
+		JTextField id2 = new JTextField();
 		id2.setLocation(xID + groupTotal, y1);
 		id2.setSize(WIDTH_TF, HEIGHT);
 		con.add(id2);
@@ -65,7 +65,7 @@ public class WindowDesign extends JFrame {
 		pw1.setSize(WIDTH_L, HEIGHT);
 		con.add(pw1);
 		
-		JTextField pw2 = new JTextField("패스워드");
+		JTextField pw2 = new JTextField();
 		pw2.setLocation(xPW + groupTotal, y1);
 		pw2.setSize(WIDTH_TF, HEIGHT);
 		con.add(pw2);
@@ -78,7 +78,7 @@ public class WindowDesign extends JFrame {
 		bd1.setSize(WIDTH_L, HEIGHT);
 		con.add(bd1);
 		
-		JTextField bd2 = new JTextField("0000-00-00");
+		JTextField bd2 = new JTextField();
 		bd2.setLocation(xBD + groupTotal, y1);
 		bd2.setSize(WIDTH_TF, HEIGHT);
 		con.add(bd2);
@@ -91,7 +91,7 @@ public class WindowDesign extends JFrame {
 		tel1.setSize(WIDTH_L, HEIGHT);
 		con.add(tel1);
 		
-		JTextField tel2 = new JTextField("010-0000-0000");
+		JTextField tel2 = new JTextField();
 		tel2.setLocation(xTel + groupTotal, y1);
 		tel2.setSize(WIDTH_TF+20, HEIGHT);
 		con.add(tel2);
@@ -104,7 +104,7 @@ public class WindowDesign extends JFrame {
 		balance1.setSize(WIDTH_L, HEIGHT);
 		con.add(balance1);
 		
-		JTextField balance2 = new JTextField("");
+		JTextField balance2 = new JTextField();
 		balance2.setLocation(xBalance + groupTotal, y1);
 		balance2.setSize(WIDTH_TF, HEIGHT);
 		con.add(balance2);
@@ -115,18 +115,18 @@ public class WindowDesign extends JFrame {
 		ta.setSize(980, 200);
 		con.add(ta);
 		
-		
+		int x2 = 80;
 		int y2 = y1+GAP+200+GAP;
 				
-		JButton btn1 = new JButton("모든 기능");
-		btn1.setLocation(x, y2);
+		JButton btn1 = new JButton("전체내용");
+		btn1.setLocation(x2, y2);
 		btn1.setSize(WIDTH_BTN, HEIGHT);
 		con.add(btn1);
 		
 		
-		int btn2x = x+WIDTH_BTN+GAP_BTN;
+		int btn2x = x2+WIDTH_BTN+GAP_BTN;
 		
-		JButton btn2 = new JButton("버튼");
+		JButton btn2 = new JButton("입력");
 		btn2.setLocation(btn2x, y2);
 		btn2.setSize(WIDTH_BTN, HEIGHT);
 		con.add(btn2);
@@ -134,7 +134,7 @@ public class WindowDesign extends JFrame {
 		
 		int btn3x = btn2x+WIDTH_BTN+GAP_BTN;
 		
-		JButton btn3 = new JButton("버튼");
+		JButton btn3 = new JButton("조회");
 		btn3.setLocation(btn3x, y2);
 		btn3.setSize(WIDTH_BTN, HEIGHT);
 		con.add(btn3);
@@ -142,10 +142,18 @@ public class WindowDesign extends JFrame {
 		
 		int btn4x = btn3x+WIDTH_BTN+GAP_BTN;
 		
-		JButton btn4 = new JButton("버튼");
+		JButton btn4 = new JButton("수정");
 		btn4.setLocation(btn4x, y2);
 		btn4.setSize(WIDTH_BTN, HEIGHT);
 		con.add(btn4);
+		
+		
+		int btn5x = btn4x+WIDTH_BTN+GAP_BTN;
+		
+		JButton btn5 = new JButton("삭제");
+		btn5.setLocation(btn5x, y2);
+		btn5.setSize(WIDTH_BTN, HEIGHT);
+		con.add(btn5);
 		
 		
 		
