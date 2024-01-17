@@ -1,5 +1,5 @@
 //2 polymorphism exercise
-package part1.practice;
+package part1.practice1;
 
 public class Car {
 
