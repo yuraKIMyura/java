@@ -1,8 +1,8 @@
 //2
 package part01.absFactory;
 
-public abstract class DoorProduct {
-	
+public abstract class TireProduct {
+
 	public abstract String Assemble();
 	
 }//class
