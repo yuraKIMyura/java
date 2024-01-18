@@ -5,4 +5,12 @@ Servers/
 
 # Eclipse
 .classpath
+.project
 .settings/
+/.metadata/
+
+# External tool builders
+.externalToolBuilders/
+
+# Target directory
+target/
