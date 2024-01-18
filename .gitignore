@@ -2,3 +2,7 @@
 *.txt
 Servers/
 .DS_Store
+
+# Eclipse
+.classpath
+.settings/
