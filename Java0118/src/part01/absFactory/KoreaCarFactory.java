@@ -4,12 +4,12 @@ package part01.absFactory;
 public class KoreaCarFactory extends CarFactory{
 
 	@Override
-	public TireProduct createTire() {
+	public TireFactory createTire() {
 		return new KoreaTireProduct();
 	}
 
 	@Override
-	public DoorProduct createDoor() {
+	public DoorFactory createDoor() {
 		return new KoreaDoorProduct();
 	}
 

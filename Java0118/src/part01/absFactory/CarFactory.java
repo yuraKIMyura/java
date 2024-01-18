@@ -1,10 +1,10 @@
-//2
+//2 Abstract Factory Pattern과 다형성
 package part01.absFactory;
 
 public abstract class CarFactory {
 	
 	//abstract method declaration
-	public abstract TireProduct createTire();
-	public abstract DoorProduct createDoor();
+	public abstract TireFactory createTire();
+	public abstract DoorFactory createDoor();
 	
 }//class

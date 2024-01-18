@@ -1,7 +1,7 @@
 //2
 package part01.absFactory;
 
-public class KoreaDoorProduct extends DoorProduct{
+public class KoreaDoorProduct extends DoorFactory{
 
 	@Override
 	public String Assemble() {
