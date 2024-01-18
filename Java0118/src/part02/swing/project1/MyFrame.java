@@ -4,6 +4,8 @@ package part02.swing.project1;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,6 +18,14 @@ public class MyFrame extends JFrame implements ActionListener{
 	
 	JButton jb1 = new JButton("전체내용");
 	JButton jb2 = new JButton("입력");
+	
+	JTextField jt1 = new JTextField();
+	JTextField jt2 = new JTextField();
+	JTextField jt3 = new JTextField();
+	JTextField jt4 = new JTextField();
+	JTextField jt5 = new JTextField();
+	
+	List<Account> list = new ArrayList<>();
 	
 	public MyFrame() {
 		
@@ -31,7 +41,7 @@ public class MyFrame extends JFrame implements ActionListener{
 		lb1.setLocation(20, 50);
 		lb1.setSize(100, 30);
 		
-		JTextField jt1 = new JTextField();
+		
 		con.add(jt1);
 		jt1.setLocation(50, 50);
 		jt1.setSize(100, 30);
@@ -41,7 +51,6 @@ public class MyFrame extends JFrame implements ActionListener{
 		lb2.setLocation(200, 50);
 		lb2.setSize(100, 30);
 		
-		JTextField jt2 = new JTextField();
 		con.add(jt2);
 		jt2.setLocation(250, 50);
 		jt2.setSize(100, 30);
@@ -50,8 +59,7 @@ public class MyFrame extends JFrame implements ActionListener{
 		con.add(lb3);
 		lb3.setLocation(400, 50);
 		lb3.setSize(100, 30);
-		
-		JTextField jt3 = new JTextField();
+
 		con.add(jt3);
 		jt3.setLocation(460, 50);
 		jt3.setSize(100, 30);
@@ -60,8 +68,7 @@ public class MyFrame extends JFrame implements ActionListener{
 		con.add(lb4);
 		lb4.setLocation(620, 50);
 		lb4.setSize(100, 30);
-		
-		JTextField jt4 = new JTextField();
+
 		con.add(jt4);
 		jt4.setLocation(680, 50);
 		jt4.setSize(100, 30);
@@ -70,8 +77,8 @@ public class MyFrame extends JFrame implements ActionListener{
 		con.add(lb5);
 		lb5.setLocation(20, 80);
 		lb5.setSize(100, 30);
-		
-		JTextField jt5 = new JTextField();
+
+
 		con.add(jt5);
 		jt5.setLocation(50, 80);
 		jt5.setSize(100, 30);
@@ -135,6 +142,11 @@ public class MyFrame extends JFrame implements ActionListener{
 				break;
 			case "입력":
 				System.out.println("입력 실행");
+								
+				Account acc = new Account(jt1.getText(), jt2.getText(), jt3.getText(), jt4.getText(), jt5.getText());
+				list.add(acc);
+				System.out.println(list);
+				
 				break;
 			default:
 				break;
