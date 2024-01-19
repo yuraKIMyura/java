@@ -1,4 +1,4 @@
-//6 swing 연습
+//6 swing mini test
 package part01.swingExercise;
 
 import javax.swing.JFrame;
