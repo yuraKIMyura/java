@@ -25,6 +25,7 @@ public class JdbcEx {
 		Connection conn = DriverManager.getConnection(url, id, pass);
 		
 		System.out.println("MySQL 연결 성공");
+		conn.close();
 	}
 
 }
