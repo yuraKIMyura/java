@@ -2,12 +2,16 @@
 package part02.jdbc;
 
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class JdbcSelect {
+	
+	static List<Employee> list = new ArrayList<Employee>();
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
@@ -23,10 +27,11 @@ public class JdbcSelect {
 		//여기서부터 Insert, Delete, Update와 달라짐
 		ResultSet rs = stmt.executeQuery(sql);
 		while(rs.next()){
-			System.out.print(rs.getRow()+ " ");
-			System.out.print(rs.getInt("empno")+ " ");
-			System.out.print(rs.getString("ename")+ " ");
-			System.out.print(rs.getDouble("sal")+ " \n");
+			list.add(new Employee(rs.getInt("empno"), rs.getString("ename"), rs.getDouble("sal")));
+		}
+		
+		for(Employee e : list) {
+			System.out.println(e);
 		}
 	}
 
