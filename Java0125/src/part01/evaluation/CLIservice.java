@@ -157,7 +157,7 @@ public class CLIservice {
 			stmt.getResultSet();
 
 			if(column.equals("*")) {
-				rs = stmt.executeQuery("SELECT * FROM emp");
+				rs = stmt.executeQuery("SELECT * FROM emp ORDER BY empno");
 				printResult(rs);
 			}else if(column.equals("mgr")) {
 				System.out.print("검색할 mgr을 입력해주세요. (NULL일 경우 ENTER 입력)");
