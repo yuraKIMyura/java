@@ -1,5 +1,5 @@
 //10 시험용
-package part01.evaluation;
+package part02.evaluation;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
