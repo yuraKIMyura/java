@@ -1,5 +1,5 @@
 //10 시험용
-package part02.evaluation;
+package evaluation;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -312,7 +312,7 @@ public class CLIservice {
 
 		try {
 			stmt = connection.createStatement();
-			System.out.print("정확한 empno를 입력해주세요: ");
+			System.out.print("수정하려는 데이터의 정확한 empno(최대 네자리)를 입력해주세요: ");
 			empno = Integer.parseInt(scanner.nextLine());
 			rs = stmt.executeQuery("SELECT * FROM emp WHERE empno=" + empno);
 			printResult(rs);
