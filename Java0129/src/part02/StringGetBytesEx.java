@@ -6,12 +6,29 @@ import java.io.UnsupportedEncodingException;
 public class StringGetBytesEx {
 
 	public static void main(String[] args) {
-		String str = "안녕하세요";
-		
+		String str = "안녕하세요abc";
+				
 		byte[] bytes1 = str.getBytes();
 		System.out.println("bytes1.length: " + bytes1.length);
 		String str1 = new String(bytes1);
 		System.out.println("bytes1 -> String: " + str1);
+		
+		int index = str.indexOf("세요");
+		System.out.println(index);
+
+		//없으면 -1 돌려줌
+		index = str.indexOf("가요");
+		System.out.println(index);
+			
+		//String은 length(), byte은 length
+		int length = str.length();
+		System.out.println(length);
+	
+		//String object는 immutable
+		String nstr = str.replace("abc", ", 감사합니다.");
+		System.out.println(nstr);
+		System.out.println(str);
+		
 		
 		try {
 			
