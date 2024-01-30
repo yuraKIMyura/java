@@ -14,7 +14,7 @@
 	<input type="text" name="mmm">
 	<input type="submit">
 	
-	<input type="reset">
+	<input type="reset">s
 </form>
 </body>
 </html>
