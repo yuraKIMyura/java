@@ -1,4 +1,4 @@
-//3 한글은 한 글자에 3byte라는 걸 기억하세요. 영어는 1byte임.
+//3 한글은 한 글자에 2byte라는 걸 기억하세요. 영어는 1byte임.
 package part02;
 
 import java.io.UnsupportedEncodingException;
