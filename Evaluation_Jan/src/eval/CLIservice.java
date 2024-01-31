@@ -362,7 +362,14 @@ public class CLIservice {
 			System.out.print("삭제할 사원번호를 정확히 입력해주세요.");
 			int empno = Integer.parseInt(scanner.nextLine());
 			rs = stmt.executeQuery("SELECT * FROM emp WHERE empno=" +empno);
+		
+			 if (!rs.next()) {
+			        System.out.println("사원번호 " + empno + "에 대한 정보가 없습니다.");
+			        return;
+			  }
+
 			printResult(rs);
+
 			System.out.println("사원번호 "+empno+"에 대한 정보를 정말로 삭제하시겠습니까? (Y/N) ");
 			String response = scanner.nextLine();
 			

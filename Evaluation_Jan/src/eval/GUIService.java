@@ -216,6 +216,7 @@ public class GUIService extends JFrame {
 /**Query 관련 method**/	
 	//SELECT ALL
 	public void select() {
+		clearTextField();
 		lbResult.setText("");
 		String sql = "SELECT empno, ename, job, mgr, hiredate, sal, comm, deptno FROM emp ORDER BY empno ASC";
 		/**Query 결과 중복 showing 방지**/
@@ -363,6 +364,7 @@ public class GUIService extends JFrame {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	
