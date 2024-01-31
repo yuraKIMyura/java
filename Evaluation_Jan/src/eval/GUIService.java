@@ -4,8 +4,7 @@
 //TODO: Query 완료 이후에 검색 결과 수 보여주는 란 만들기!
 //TODO: insert, update, delete 후에 처리 결과 수 보여주는 란 만들기!
 //TODO: 이름으로 검색 후, 해당 자료 기반으로 수정/삭제 가능하게 만들기! (txtfield update하라는 말임)
-
-
+package eval;
 
 import java.awt.BorderLayout;
 import java.awt.Container;

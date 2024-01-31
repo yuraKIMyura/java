@@ -1,5 +1,5 @@
 //10 시험용
-
+package eval;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -164,7 +164,7 @@ public class CLIservice {
 		case "ename":
 		case "job":
 		case "hiredate":
-		case "*":
+		case "전체":
 			selectQuery(column, stmt, "string");
 			break;
 		case "sal":
@@ -172,7 +172,7 @@ public class CLIservice {
 			selectQuery(column, stmt, "double");
 			break;
 		default:
-			System.out.println("검색 조건을 확인해주세요: empno, ename, job, mgr, hiredate, sal, comm, deptno, 또는 *");
+			System.out.println("검색 조건을 확인해주세요: empno, ename, job, mgr, hiredate, sal, comm, deptno, 또는 전체");
 			break;	
 		}
 	}
@@ -186,7 +186,7 @@ public class CLIservice {
 		try {
 			stmt.getResultSet();
 
-			if(column.equals("*")) {
+			if(column.equals("전체")) {
 				rs = stmt.executeQuery("SELECT * FROM emp ORDER BY empno");
 				printResult(rs);
 			}else if(column.equals("mgr")) {
@@ -265,7 +265,7 @@ public class CLIservice {
 		try {
 			stmt = connection.createStatement();
 			
-			System.out.println("검색 조건 입력: [empno, ename, job, mgr, hiredate, sal, comm, deptno, 또는 *] 중 하나");
+			System.out.println("검색 조건 입력: [empno, ename, job, mgr, hiredate, sal, comm, deptno, 또는 전체] 중 하나");
 			String column = scanner.nextLine();
 			setColumn(column, stmt);
 			/**null data가 있는 column: mgr, comm **/
@@ -281,7 +281,7 @@ public class CLIservice {
 		ResultSet rs = null;
 		
 		try {
-				System.out.println("수정할 값을 입력해주세요.");
+				System.out.println("새로운 값을 입력해주세요.");
 				if(type.equalsIgnoreCase("int")) {
 					int input = Integer.parseInt(scanner.nextLine());
 					stmt.executeUpdate("UPDATE emp SET " + column + "='"+input+"' WHERE empno="+empno);
@@ -334,7 +334,7 @@ public class CLIservice {
 			case "ename": case "job":
 				updateQuery(column, stmt, "string", empno);
 				break;
-			case "mgr":
+			case "mgr": case "deptno":
 				updateQuery(column, stmt, "int", empno);
 				break;
 			case "sal": case "comm":
