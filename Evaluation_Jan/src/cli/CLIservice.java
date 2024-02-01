@@ -1,5 +1,5 @@
 //10 시험용
-package eval;
+package cli;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
