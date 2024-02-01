@@ -1,4 +1,3 @@
-//10 시험용
 package cli;
 
 import java.sql.Connection;
@@ -60,7 +59,9 @@ public class CLIservice {
 		}
 	}//main
 
+	
 
+/**CREATE**/	
 	private static void createData(Connection connection) {
 
 		Statement stmt;
@@ -113,74 +114,13 @@ public class CLIservice {
 			e.printStackTrace();
 		}
 
-	}//method C
+	}//method
 
-
-
-
-	//	private static void stringQuery(String colName, Statement stmt) {
-	//		System.out.println("검색할 "+colName+"을 입력해주세요.");
-	//		String input = scanner.nextLine();
-	//		try {
-	//			ResultSet rs = stmt.executeQuery("SELECT * FROM emp WHERE " + colName + " LIKE '%" + input +"%' ORDER BY " +  colName +" ASC");
-	//			printResult(rs);
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//		}
-	//	}//method
-	//
-	//	private static void intQuery(String colName, Statement stmt) {
-	//		System.out.println("검색할 "+colName+"을 입력해주세요.");
-	//		int input = Integer.parseInt(scanner.nextLine());
-	//		try {
-	//			ResultSet rs = stmt.executeQuery("SELECT * FROM emp WHERE " + colName + " LIKE '%" + input +"%' ORDER BY " +  colName +" ASC");
-	//			printResult(rs);
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//		}
-	//	}//method
-	//
-	//	private static void doubleQuery(String colName, Statement stmt) {
-	//		System.out.println("검색할 "+colName+"을 입력해주세요.");
-	//		double input = Double.parseDouble(scanner.nextLine());
-	//		try {
-	//			ResultSet rs = stmt.executeQuery("SELECT * FROM emp WHERE " + colName + " LIKE '%" + input +"%' ORDER BY " +  colName +" ASC");
-	//			printResult(rs);
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//		}
-	//	}//method
-
-
-
-
-	private static void setColumn(String column, Statement stmt) {
-		switch(column.toLowerCase()) {
-		case "empno":
-		case "mgr":
-		case "deptno":
-			selectQuery(column, stmt, "int");
-			break;
-		case "ename":
-		case "job":
-		case "hiredate":
-		case "전체":
-			selectQuery(column, stmt, "string");
-			break;
-		case "sal":
-		case "comm":
-			selectQuery(column, stmt, "double");
-			break;
-		default:
-			System.out.println("검색 조건을 확인해주세요: empno, ename, job, mgr, hiredate, sal, comm, deptno, 또는 전체");
-			break;	
-		}
-	}
 
 	
+/**READ**/		
 	private static void selectQuery(String column, Statement stmt, String type) {
-		
-		
+			
 		ResultSet rs = null;
 
 		try {
@@ -233,6 +173,30 @@ public class CLIservice {
 
 	}//method
 
+	
+	private static void setColumn(String column, Statement stmt) {
+		switch(column.toLowerCase()) {
+		case "empno":
+		case "mgr":
+		case "deptno":
+			selectQuery(column, stmt, "int");
+			break;
+		case "ename":
+		case "job":
+		case "hiredate":
+		case "전체":
+			selectQuery(column, stmt, "string");
+			break;
+		case "sal":
+		case "comm":
+			selectQuery(column, stmt, "double");
+			break;
+		default:
+			System.out.println("검색 조건을 확인해주세요: empno, ename, job, mgr, hiredate, sal, comm, deptno, 또는 전체");
+			break;	
+		}
+	}//method
+	
 
 	private static void printResult(ResultSet rs){
 
@@ -257,7 +221,7 @@ public class CLIservice {
 		}
 	}//method
 
-	
+
 	private static void readData(Connection connection) {
 
 		Statement stmt;
@@ -276,6 +240,8 @@ public class CLIservice {
 	}//method R
 
 	
+
+/**UPDATE**/		
 	private static void updateQuery(String column, Statement stmt, String type, int empno) {
 		
 		ResultSet rs = null;
@@ -302,7 +268,7 @@ public class CLIservice {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}//method
 
 	private static void updateData(Connection connection) {
 
@@ -349,9 +315,11 @@ public class CLIservice {
 			e.printStackTrace();
 		}
 
-	}//method U
+	}//method
 
-
+	
+	
+/**DELETE**/
 	private static void deleteData(Connection connection) {
 
 		Statement stmt;
@@ -362,11 +330,12 @@ public class CLIservice {
 			System.out.print("삭제할 사원번호를 정확히 입력해주세요.");
 			int empno = Integer.parseInt(scanner.nextLine());
 			rs = stmt.executeQuery("SELECT * FROM emp WHERE empno=" +empno);
-		
-			 if (!rs.next()) {
-			        System.out.println("사원번호 " + empno + "에 대한 정보가 없습니다.");
-			        return;
-			  }
+			
+			
+			if (!rs.isBeforeFirst()) {
+			       System.out.println("사원번호 " + empno + "에 대한 정보가 없습니다.");
+			       return;
+			}
 
 			printResult(rs);
 
@@ -391,6 +360,8 @@ public class CLIservice {
 			e.printStackTrace();
 		}
 
-	}//method D
+	}//method
 
+	
+	
 }//class

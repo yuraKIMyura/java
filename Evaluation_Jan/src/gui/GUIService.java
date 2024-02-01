@@ -1,9 +1,3 @@
-//[5교시] 오후 첫수업
-//1 swing...
-
-//TODO: Query 완료 이후에 검색 결과 수 보여주는 란 만들기!
-//TODO: insert, update, delete 후에 처리 결과 수 보여주는 란 만들기!
-//TODO: 이름으로 검색 후, 해당 자료 기반으로 수정/삭제 가능하게 만들기! (txtfield update하라는 말임)
 package gui;
 
 import java.awt.BorderLayout;
@@ -27,7 +21,7 @@ import javax.swing.JTextField;
 
 public class GUIService extends JFrame {
 	
-	/**1.이벤트 처리를 위해 component(button, textarea, textfield)를 field로 설정**/
+	//1.이벤트 처리를 위해 component(button, textarea, textfield)를 field로 설정
 	JButton bt1 = new JButton("전체내용");
 	JButton bt2 = new JButton("입력");
 	JButton bt3 = new JButton("이름검색");
@@ -49,7 +43,7 @@ public class GUIService extends JFrame {
 	
 	JLabel lbResult = new JLabel();
 	
-	/**4.DB 사용을 위해 Connection, Statement field로 설정**/
+	//4.DB 사용을 위해 Connection, Statement field로 설정
 	Connection conn;
 	Statement stmt;
 
@@ -58,7 +52,7 @@ public class GUIService extends JFrame {
 	//constructor: DB연결, 화면구성
 	public GUIService() {
 		
-		/**3.DB연결: Exception Handling, Resource Close**/
+		//3.DB연결: Exception Handling, Resource Close
 		String url = "jdbc:mysql://localhost:3306/firm";
 		String id = "root";
 		String pass = "mysql";
@@ -83,45 +77,11 @@ public class GUIService extends JFrame {
 		Container con = this.getContentPane();
 		con.setLayout(new BorderLayout());
 		
-		//연습을 위한 코드
-		//con.add(bt1, BorderLayout.EAST);
-		//con.add(bt2, BorderLayout.WEST);
-		//con.add(bt3, BorderLayout.SOUTH);
-		//con.add(bt4, BorderLayout.NORTH);
-		//con.add(bt5, BorderLayout.CENTER);
 		
-		/**2.Panel에 FlowLayout 설정: 화면 좌측부터 배치!**/
+		//2.Panel에 FlowLayout 설정: 화면 좌측부터 배치!
 		
 		//화면 최하단
 		//South Panel: Button Component
-		
-		
-//		JPanel jp1 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5)); // Adjust gap values as needed
-//		con.add(jp1, BorderLayout.SOUTH);
-//
-//		jp1.add(lbResult);
-//		jp1.add(bt1);
-//		jp1.add(bt2);
-//		jp1.add(bt3);
-//		jp1.add(bt4);
-//		jp1.add(bt5);
-		
-		
-//		JPanel jp1 = new JPanel(new BorderLayout());
-//		con.add(jp1, BorderLayout.SOUTH);
-//
-//		JPanel buttonPanel = new JPanel(new FlowLayout());
-//		jp1.add(lbResult, BorderLayout.NORTH);
-//		lbResult.setBounds(200, 0, 100, 20);
-//		jp1.add(buttonPanel, BorderLayout.CENTER);
-//
-//		buttonPanel.add(bt1);
-//		buttonPanel.add(bt2);
-//		buttonPanel.add(bt3);
-//		buttonPanel.add(bt4);
-//		buttonPanel.add(bt5);
-		
-		
 		JPanel jp1 = new JPanel(new FlowLayout());
 		con.add(jp1, BorderLayout.SOUTH);
 		jp1.add(lbResult);
@@ -170,7 +130,8 @@ public class GUIService extends JFrame {
 		jp3.add(lb8);
 		jp3.add(tf8);
 		
-		/**5.Event 설정을 위해 익명의 구현객체 생성**/
+		
+		//5.Event 설정을 위해 익명의 구현객체 생성
 		bt1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -212,8 +173,30 @@ public class GUIService extends JFrame {
 	}//constructor
 
 
+
+	
 	
 /**Query 관련 method**/	
+
+	
+	/**CREATE**/
+	public void insert() {
+		lbResult.setText("");
+		String sql = String.format("INSERT INTO emp VALUES (%d, '%s', '%s', %d, '%s', %.2f, %.2f, %d)",
+				Integer.parseInt(tf1.getText()), tf2.getText(), tf3.getText(), Integer.parseInt(tf4.getText()), tf5.getText(), Double.parseDouble(tf6.getText()), Double.parseDouble(tf7.getText()), Integer.parseInt(tf8.getText()));
+		int result=-1;
+		try {
+			result = stmt.executeUpdate(sql);
+			clearTextField();
+			select();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		lbResult.setText("총 "+result+"개의 자료 입력 성공");
+	}//method
+	
+	
+	/**READ**/
 	//SELECT ALL
 	public void select() {
 		clearTextField();
@@ -246,10 +229,10 @@ public class GUIService extends JFrame {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}//method
 	
 	
-	//SELECT with EMPNO
+	//SELECT with EMPNO (for DELETE)
 	public void select(int empno) {
 		String sql = "SELECT empno, ename, job, mgr, hiredate, sal, comm, deptno FROM emp WHERE empno ="+empno;
 		ta.setText("");
@@ -277,51 +260,10 @@ public class GUIService extends JFrame {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}//method
 	
 	
-	//INSERT METHOD
-	public void insert() {
-		lbResult.setText("");
-		String sql = String.format("INSERT INTO emp VALUES (%d, '%s', '%s', %d, '%s', %.2f, %.2f, %d)",
-				Integer.parseInt(tf1.getText()), tf2.getText(), tf3.getText(), Integer.parseInt(tf4.getText()), tf5.getText(), Double.parseDouble(tf6.getText()), Double.parseDouble(tf7.getText()), Integer.parseInt(tf8.getText()));
-		/*String sql = String.format("INSERT INTO emp VALUES (%s, '%s', '%s', %s, '%s', %s, %s, %s)",
-				tf1.getText(), tf2.getText(), tf3.getText(), tf4.getText(), tf5.getText(), tf6.getText(), tf7.getText(), tf8.getText()); */
-		int result=-1;
-		try {
-			result = stmt.executeUpdate(sql);
-			clearTextField();
-			select();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		lbResult.setText("총 "+result+"개의 자료 입력 성공");
-	}
-	
-	
-	public void update() {
-		lbResult.setText("");
-		int no=99999;
-		String sql = String.format("UPDATE emp SET ename='%s', job='%s', mgr=%s, hiredate='%s', sal=%s, comm=%s, deptno=%s WHERE empno=%s"
-				, tf2.getText(), tf3.getText(), tf4.getText(), tf5.getText(), tf6.getText(), tf7.getText(), tf8.getText(), tf1.getText());
-		int result=-1;
-		no=Integer.parseInt(tf1.getText());
-		try {
-			result = stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		clearTextField();
-		if(result>=1) {
-			select(no);
-			lbResult.setText("총 "+result+"개의 자료 수정 완료.");
-		}else {
-			ta.setText("");
-			lbResult.setText("자료 수정에 실패했습니다");
-		}
-	}
-	
-	
+	//SELECT with ENAME
 	public void searchName() {
 		lbResult.setText("");
 		String sql = String.format("SELECT empno, ename, job, mgr, hiredate, sal, comm, deptno FROM emp WHERE ename='%s'", tf2.getText());
@@ -365,9 +307,34 @@ public class GUIService extends JFrame {
 			e.printStackTrace();
 		}
 		
-	}
+	}//method
 	
 	
+	/**UPDATE**/	
+	public void update() {
+		lbResult.setText("");
+		int no=99999;
+		String sql = String.format("UPDATE emp SET ename='%s', job='%s', mgr=%s, hiredate='%s', sal=%s, comm=%s, deptno=%s WHERE empno=%s"
+				, tf2.getText(), tf3.getText(), tf4.getText(), tf5.getText(), tf6.getText(), tf7.getText(), tf8.getText(), tf1.getText());
+		int result=-1;
+		no=Integer.parseInt(tf1.getText());
+		try {
+			result = stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		clearTextField();
+		if(result>=1) {
+			select(no);
+			lbResult.setText("총 "+result+"개의 자료 수정 완료.");
+		}else {
+			ta.setText("");
+			lbResult.setText("자료 수정에 실패했습니다");
+		}
+	}//method
+	
+	
+	/**DELETE**/	
 	public void delete() {
 		lbResult.setText("");
 		String sql = String.format("DELETE FROM emp WHERE empno=%s AND ename='%s'", tf1.getText(), tf2.getText());
@@ -386,9 +353,10 @@ public class GUIService extends JFrame {
 			ta.setText("[삭제 실패]");
 			lbResult.setText("삭제에 실패했습니다.");
 		}
-	}
+	}//method
 	
 	
+	/**miscellaneous**/
 	private void clearTextField() {
 		tf1.setText("");
 		tf2.setText("");
@@ -398,14 +366,15 @@ public class GUIService extends JFrame {
 		tf6.setText("");
 		tf7.setText("");
 		tf8.setText("");	
-	}
+	}//method
+	
+	
+	
 	
 	
 	public static void main(String[] args) {
 		new GUIService();
 	}//main
-
-
 
 
 	
