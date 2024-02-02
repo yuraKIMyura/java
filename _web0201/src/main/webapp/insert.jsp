@@ -12,6 +12,8 @@
 <body>
 
 <%
+request.setCharacterEncoding("UTF-8");
+
 String driver = "oracle.jdbc.driver.OracleDriver";
 String url = "jdbc:oracle:thin:@localhost:1521:xe";
 Class.forName(driver);
@@ -26,8 +28,10 @@ if(result==1){
 	out.println("입력성공");
 }
 %>
-
-
+<a href="select.jsp">결과보기</a>
+<%
+response.sendRedirect("select.jsp"); 
+%>
 
 </body>
 </html>
