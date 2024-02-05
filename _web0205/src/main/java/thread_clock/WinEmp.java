@@ -73,25 +73,9 @@ public class WinEmp extends JFrame {
 		jp3.add(lb3); jp3.add(tf3);
 		
 
-		/**[방법1-1] Thread 클래스로부터 직접 생성 + Runnable 익명구현객체**/
-		Thread thread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while(true) {
-					LocalDateTime localDateTime = LocalDateTime.now();
-					String localDateTimeFormat1 = localDateTime.format(DateTimeFormatter.ofPattern("HH시 mm분 ss초"));
-					WinEmp.this.setTitle(localDateTimeFormat1);
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}	
-				}//while
-			}//method
-		});
-		thread.start();
+
 		
-		/**내부클래스 사용**/
+		/**[선생님] 내부클래스 사용**/
 //		class Clock implements Runnable{
 //			
 //			@Override
@@ -108,6 +92,31 @@ public class WinEmp extends JFrame {
 //				}//while
 //			}//method
 //		}//class				
+
+		
+		/**[방법1-1] Thread 클래스로부터 직접 생성 + Runnable 익명구현객체**/
+//		Thread thread = new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				while(true) {
+//					LocalDateTime localDateTime = LocalDateTime.now();
+//					String localDateTimeFormat1 = localDateTime.format(DateTimeFormatter.ofPattern("HH시 mm분 ss초"));
+//					WinEmp.this.setTitle(localDateTimeFormat1);
+//					try {
+//						Thread.sleep(1000);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}	
+//				}//while
+//			}//method
+//		});
+//		thread.start();
+		
+		
+		/**[방법1-2] Thread 클래스로부터 직접 생성 + Runnable구현Class생성**/
+		Clock2 clock2 = new Clock2(this); //여기서 this는 WinEmp를 의미한다.
+		Thread thread = new Thread(clock2);
+		thread.start();
 		
 		this.setLocation(500, 400);
 		this.setSize(500, 300);
