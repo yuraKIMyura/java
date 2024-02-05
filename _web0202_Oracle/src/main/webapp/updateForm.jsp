@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="./css/style.css">
 <meta charset="UTF-8">
 <title>학생 추가</title>
 </head>
@@ -55,8 +56,7 @@
        			</tr>
        			
        			<tr>
-       				<td> <button type="submit">수정</button></td>
-       				<td> <button type="reset">취소</button></td>
+					<td colspan="2"> <button type="submit">수정</button> <button type="reset">취소</button></td>
        			</tr>
        		
        		</table>

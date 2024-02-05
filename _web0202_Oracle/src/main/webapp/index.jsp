@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="./css/style.css">
 <title>학생 성적 관리</title>
- <style>
-        table { width: 500px; text-align: center;}
-        th    { background-color: #3652AD; color: white}
-        tr	  { background-color: #E9F6FF;}
-        button#nav { background-color:#FE7A36; color:white; width:100px; height:30px;}
-        button { background-color: #280274; border: none; color:white; border-radius:2px}
-    </style>    
+ 
 </head>
 <body>
 

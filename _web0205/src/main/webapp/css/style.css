@@ -1,0 +1,31 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+
+
+*{
+	font-family: 'Noto Serif KR', serif;
+}
+
+
+
+input {
+	width: 100px;
+}
+
+
+
+td, th {
+	width: 50px;
+	text-align: center;
+}
+
+tr{
+	border-bottom: 1px solid;
+	border-bottom-color: red;
+	
+	border-top: 1px solid;
+	border-top-color: red;
+	
+}	
+
+
