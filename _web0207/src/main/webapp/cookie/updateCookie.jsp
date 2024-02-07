@@ -15,6 +15,7 @@
 		if(ck.getName().equals(name)){
 			ck.setValue(URLEncoder.encode(value, "utf-8"));
 			response.addCookie(ck);
+			//브라우저 쿠키 파일에 해당 정보 저장
 		}
 	}
 	response.sendRedirect("listCookies.jsp");
