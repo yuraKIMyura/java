@@ -2,6 +2,8 @@ package util;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Cookie;
+
+import java.util.HashMap;
 import java.util.Map;
 import java.net.URLEncoder; 
 import java.net.URLDecoder; 
@@ -9,8 +11,10 @@ import java.io.IOException;
 
 public class Cookies {
 	
-	private Map<String, Cookie> cookieMap = 
-			new java.util.HashMap<String, Cookie>();
+	//배열에 있는 내용을 HashMap에 넣어서 key로 검색을 한다.
+	//코드 작성할 때 매번 코드를 쓰지 않아도 된다.
+	//Spring MVC에서 하는 내용이 이런 것들이다.
+	private Map<String, Cookie> cookieMap = new HashMap<>();
 	
 	public Cookies(HttpServletRequest request) {
 		Cookie[] cookies = request.getCookies();
