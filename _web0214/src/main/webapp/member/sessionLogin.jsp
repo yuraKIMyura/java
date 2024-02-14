@@ -31,6 +31,7 @@
 	
 	if(isLoggedIn) {
 		session.setAttribute("MEMBERID", num);
+		response.sendRedirect("list.jsp");
 %>
 		<html>
 		<head><title>로그인성공</title></head>

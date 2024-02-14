@@ -2,46 +2,42 @@
     pageEncoding="UTF-8"%>
 
 <%@ page import="java.sql.*" %>
+<%@ page import="dto.Board" %>
+<%@ page import="dao.BoardDao"%>
 
 <%
-    // 글 번호 값 얻기, 주어지지 않았으면 0으로 설정
+    
+	//로그인 여부 확인해서 로그인 안 한 경우 로그인 창으로 보내기
+	String memberID = (String) session.getAttribute("MEMBERID");
+	if(memberID == null) {
+		response.sendRedirect("sessionLoginForm.jsp");
+	}
+
+	// 글 번호 값 얻기, 주어지지 않았으면 0으로 설정
     String tmp = request.getParameter("num");
-    int num = (tmp != null && tmp.length() > 0) ? Integer.parseInt(tmp) : 0;
+    int num = (tmp != null && tmp.length() > 0) ? Integer.parseInt(tmp)
+                                                : 0;
 
     // 새 글쓰기 모드를 가정하고 변수 초기값 설정
-    String writer  = "";
-    String title   = "";
+    String writer = "";
+    String title = "";
     String content = "";
-    String action  = "insert.jsp";
+    String action = "insert.jsp";
+    
+    BoardDao dao = BoardDao.getInstance();
 
     // 글 번호가 주어졌으면, 글 수정 모드
     if (num > 0) {
+    	Board board = dao.selectOne(num);
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        ResultSet rs = null;
-        try (
-            Connection conn = DriverManager.getConnection(
-            		"jdbc:mysql://localhost:3306/project1", "root", "mysql");
-            PreparedStatement pstmt = conn.prepareStatement("select * from board where num=?");
-	
-        ) {
-        	
-        	// 쿼리 실행
-            pstmt.setInt(1, num);
-            rs = pstmt.executeQuery();
-        	
-            if (rs.next()) {
-                // 읽어들인 글 데이터를 변수에 저장
-                writer  = rs.getString("writer" );
-                title   = rs.getString("title"  );
-                content = rs.getString("content");
+    	// 읽어들인 글 데이터를 변수에 저장
+        writer = board.getWriter();
+        title = board.getTitle();
+        content = board.getContent();
 
-                // 글 수정 모드일 때는 저장 버튼을 누르면 UPDATE 실행
-                action  = "update.jsp?num=" + num;
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        /**코드 수정 필요**/
+        // 글 수정 모드일 때는 저장 버튼을 누르면 UPDATE 실행
+        action  = "update.jsp?num=" + num;
     }
 %>
 
