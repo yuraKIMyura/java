@@ -6,8 +6,10 @@
 <%@ page import="dao.BoardDao"%>
     
 <%
-	String memberId = (String) session.getAttribute("MEMBERID");
-	if (memberId == null) {
+
+	//로그인 여부 확인해서 로그인 안 한 경우 로그인 창으로 보내기
+	String memberID = (String) session.getAttribute("MEMBERID");
+	if(memberID == null) {
 		response.sendRedirect("sessionLoginForm.jsp");
 	}
 
@@ -17,16 +19,15 @@
 
 	BoardDao dao = BoardDao.getInstance();
 	int result = dao.delete(num);
-	System.out.println("삭제 결과: " + result);
 	
 	if(result == 1) {
 %>
 	<script>
 		alert("삭제에 성공했습니다.");
-	</script>
-		
+		location.href="list.jsp";
+	</script>		
 <%
-	response.sendRedirect("list.jsp");
+/* 	response.sendRedirect("list.jsp"); 서버에서 작동*/
 	} else {
 %>	
 	<script>
@@ -34,7 +35,7 @@
 	</script>
 	
 <%	
-	response.sendRedirect("list.jsp");
-}
+/* 	response.sendRedirect("list.jsp");
+ */}
    
 %>

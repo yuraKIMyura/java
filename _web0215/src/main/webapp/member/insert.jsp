@@ -9,11 +9,12 @@
  
 <%
 
-	String memberId = (String) session.getAttribute("MEMBERID");
-	if (memberId == null) {
+	//로그인 여부 확인해서 로그인 안 한 경우 로그인 창으로 보내기
+	String memberID = (String) session.getAttribute("MEMBERID");
+	if(memberID == null) {
 		response.sendRedirect("sessionLoginForm.jsp");
 	}
-
+	
     request.setCharacterEncoding("utf-8");
 
     // 양식에 입력되었던 값 읽기
