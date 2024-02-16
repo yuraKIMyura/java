@@ -14,27 +14,21 @@
 	}
 %>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <style>
-        table     { width:680px; text-align:center; }
-        th        { background-color:cyan; }
-        
-        .num      { width: 80px; }
-        .title    { width:230px; }
-        .writer   { width:100px; }
-        .regtime  { width:180px; }
-                
-        a:link    { text-decoration:none; color:blue; }
-        a:visited { text-decoration:none; color:gray; }
-        a:hover   { text-decoration:none; color:red;  }
-    </style>
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-<table>
+
+<div class="container" style="padding-top: 50px">
+
+<table class="table table-bordered table-hover">
     <tr>
         <th class="num"    >번호    </th>
         <th class="title"  >제목    </th>
@@ -65,7 +59,9 @@
 </table>
 
 <br>
-<input type="button" value="글쓰기" onclick="location.href='write.jsp'">
+<button type="button" class="btn btn-primary" onclick="location.href='write.jsp'">글쓰기</button>
 
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
