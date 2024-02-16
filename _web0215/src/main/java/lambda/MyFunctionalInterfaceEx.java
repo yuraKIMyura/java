@@ -8,7 +8,7 @@ public class MyFunctionalInterfaceEx {
 		System.out.println(mfi.method(1,1));
 		
 		/*추상메소드 method(int x, int y)를 실행했을 때, sumint(int x, int y) method를 return 해라*/
-		MyFunctionalInterface mfi2 = (x,y) -> sum(x,y);
+		MyFunctionalInterface mfi2 = (a,b) -> sum(a,b);
 		System.out.println(mfi2.method(2,2));
 		
 	}//main
