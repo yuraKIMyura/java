@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@page import="dto.Member"%>
+<% 
+Member member = (Member) session.getAttribute("member");
+if(member==null){
+	response.sendRedirect("loginForm.do");
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
