@@ -9,9 +9,10 @@
 	<servlet>
 		<servlet-name>DBCPInit</servlet-name>
 		<servlet-class>mvjsp.jdbc.loader.DBCPInit</servlet-class>
+		<!-- web.xml과 아래 내용이 동일해야 한다 -->
 		<init-param>
 			<param-name>jdbcdriver</param-name>
-			<param-value>com.mysql.jdbc.Driver</param-value>
+			<param-value>oracle.jdbc.driver.OracleDriver</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -21,3 +22,6 @@
 		<location>/error_view.jsp</location>
 	</error-page>
 </web-app>
+
+<!-- DBCPInit은 servlet인데 init할 때 Class.forName을 한 번 해 줌!
+이렇게하면 처음 시작할 때 한 번만 OracleDB와 연결하면 되는 것임 -->
