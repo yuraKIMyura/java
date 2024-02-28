@@ -13,3 +13,4 @@ public class ConnectionProvider {
 
 //jdbc:apache:commons:dbcp:/board
 //board 여기는 board.jocl 이 이름에서 따온 것임
+//table 이름과 전혀 상관 없음
