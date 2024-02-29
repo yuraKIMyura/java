@@ -6,6 +6,55 @@
 		http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="chap17" version="3.0">
 	
+	<!-- controller -->
+	
+	
+	<servlet>
+		<servlet-name>ControllerUsingURI</servlet-name>
+		<servlet-class>mvc.controller.ControllerUsingURI</servlet-class>
+		<init-param>
+			<param-name>configFile</param-name>
+			<param-value>
+                /WEB-INF/commandHandlerURI.properties
+            </param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControllerUsingURI</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ControllerUsingFile</servlet-name>
+		<servlet-class>mvc.controller.ControllerUsingFile</servlet-class>
+		<init-param>
+			<param-name>configFile</param-name>
+			<param-value>/WEB-INF/commandHandler.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ControllerUsingFile</servlet-name>
+		<url-pattern>/controllerUsingFile</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 필터 -->
+	
+	<filter>
+		<filter-name>LoginCheck</filter-name>
+		<filter-class>filter.LoginCheckFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>LoginCheck</filter-name>
+		<url-pattern>/board/*</url-pattern>
+		<!--board 밑에 있는 모든 내용에 대해 적용한다 -->
+	</filter-mapping>
+	
+	
 	<servlet>
 		<servlet-name>DBCPInit</servlet-name>
 		<servlet-class>mvjsp.jdbc.loader.DBCPInit</servlet-class>

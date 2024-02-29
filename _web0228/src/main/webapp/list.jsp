@@ -12,6 +12,6 @@ ArrayList<Member> list = dao.selectAll(conn);
 request.setAttribute("list", list);
 %>
 
-<jsp:forward page="list_view.jsp"></jsp:forward>
+<jsp:forward page="list_view.jsp"/>
 
 

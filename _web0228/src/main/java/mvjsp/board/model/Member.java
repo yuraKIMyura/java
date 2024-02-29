@@ -5,6 +5,15 @@ public class Member {
 	String id;
 	String email;
 	String name;
+	
+	
+	public Member(String id, String email, String name) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.name = name;
+	}
+	
 	public Member(int memberno, String id, String email, String name) {
 		super();
 		this.memberno = memberno;
@@ -12,6 +21,7 @@ public class Member {
 		this.email = email;
 		this.name = name;
 	}
+	
 	public int getMemberno() {
 		return memberno;
 	}
@@ -36,6 +46,7 @@ public class Member {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	@Override
 	public String toString() {
 		return "Member [memberno=" + memberno + ", id=" + id + ", email=" + email + ", name=" + name + "]";

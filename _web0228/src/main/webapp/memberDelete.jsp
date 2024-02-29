@@ -1,19 +1,17 @@
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="mvjsp.board.dao.MemberDao"%>
+<%@page import="mvjsp.jdbc.connection.ConnectionProvider"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-Class.forName("oracle.jdbc.driver.OracleDriver");
-Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
 
-String memberno = request.getParameter("memberno");
+int memberno = Integer.parseInt(request.getParameter("memberno"));
 
-String sql = "delete from member where memberno=?";
-PreparedStatement pstmt = conn.prepareStatement(sql);
+//아래 두 줄은 무조건
+Connection conn = ConnectionProvider.getConnection();
+MemberDao dao = MemberDao.getInstance();
 
-pstmt.setString(1, memberno);
+dao.delete(conn, memberno);
 
-int res = pstmt.executeUpdate();
 response.sendRedirect("list.jsp");
 %>
