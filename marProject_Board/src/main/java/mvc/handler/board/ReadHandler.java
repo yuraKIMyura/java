@@ -13,6 +13,7 @@ import mvjsp.board.dao.MemberDao;
 import mvjsp.board.dao.RecommendDao;
 import mvjsp.board.model.Board;
 import mvjsp.board.model.Member;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
 public class ReadHandler implements CommandHandler{
@@ -108,6 +109,8 @@ public class ReadHandler implements CommandHandler{
 		req.setAttribute("isWriter", isWriter);
 		req.setAttribute("isRecommended", isRecommended);
 
+		
+		JdbcUtil.close(conn);
 		return "/WEB-INF/board/readView.jsp";
 		
 	}

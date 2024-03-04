@@ -14,6 +14,7 @@ import mvjsp.board.dao.RecommendDao;
 import mvjsp.board.model.Board;
 import mvjsp.board.model.Member;
 import mvjsp.board.model.Recommend;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
 public class RecommendHandler implements CommandHandler{
@@ -55,7 +56,9 @@ public class RecommendHandler implements CommandHandler{
 		Board article = boardDao.selectOneArticle(conn, boardno);
 		System.out.println("Article instance: " + article);
 
-		article.setRecommends(recommendDao.countRecommends(conn, boardno));
+		if (article != null) {
+		    article.setRecommends(recommendDao.countRecommends(conn, boardno));
+		}
         
 		String hits = "false";		
 		//isRecommended가 "true"이면 '추천해제', "false"이면 '추천'
@@ -65,6 +68,8 @@ public class RecommendHandler implements CommandHandler{
 		
 		System.out.println("isRecommended: "+ isRecommended);
 
+		
+		JdbcUtil.close(conn);
 		return "/WEB-INF/board/redirectRecommendView.jsp";
 		
 	}

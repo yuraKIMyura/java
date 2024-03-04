@@ -38,7 +38,7 @@
 
       <div class="checkbox mb-3" style="padding-top: 1rem; padding-bottom: 0.5rem">
         <label style="font-size: small;">
-          <input type="checkbox" name="remember"> 로그인 정보 기억하기
+          <input type="checkbox" name="remember" checked> 로그인 정보 기억하기
         </label>
       </div>
       

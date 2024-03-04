@@ -14,6 +14,7 @@ import mvjsp.board.dao.MemberDao;
 import mvjsp.board.dao.RecommendDao;
 import mvjsp.board.model.Board;
 import mvjsp.board.model.Member;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
 public class LoginHandler implements CommandHandler{
@@ -63,22 +64,23 @@ public class LoginHandler implements CommandHandler{
 		
 		req.setAttribute("allList", allList);
 		
-//		ArrayList<Board> popularList = boardDao.selectPopular(conn);
-//		req.setAttribute("popularList", popularList);
-//		
-//		ArrayList<Board> bestList = boardDao.selectBest(conn);
-//		req.setAttribute("bestList", bestList);
+		ArrayList<Board> popularList = boardDao.selectPopular(conn);
+		req.setAttribute("popularList", popularList);
 		
-//		ArrayList<Board> anonymousList = boardDao.selectAnonymous(conn);
-//		req.setAttribute("anonymousList", anonymousList);
-//		
-//		ArrayList<Board> freeList = boardDao.selectFree(conn);
-//		req.setAttribute("freeList", freeList);
-//	
+		ArrayList<Board> bestList = boardDao.selectBest(conn);
+		req.setAttribute("bestList", bestList);
+		
+		ArrayList<Board> anonymousList = boardDao.selectAnonymous(conn);
+		req.setAttribute("anonymousList", anonymousList);
+		
+		ArrayList<Board> freeList = boardDao.selectFree(conn);
+		req.setAttribute("freeList", freeList);
+	
 		
 		boolean isValidUser = memberDao.authenticateUser(conn, id, email);
 		
 		
+		JdbcUtil.close(conn);
 		
 		if(isValidUser) {
 			HttpSession session = req.getSession();
@@ -89,6 +91,11 @@ public class LoginHandler implements CommandHandler{
 			return "/WEB-INF/member/loginForm.jsp";
 		}
 		
+				
+	}
+		
+		
+
 	}
 
-}
+

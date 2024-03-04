@@ -11,6 +11,7 @@ import mvjsp.board.dao.BoardDao;
 import mvjsp.board.dao.MemberDao;
 import mvjsp.board.model.Board;
 import mvjsp.board.model.Member;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
 public class WriteHandler implements CommandHandler{
@@ -36,6 +37,8 @@ public class WriteHandler implements CommandHandler{
 		int insertResult = boardDao.insert(conn, article);
 		System.out.println("insertResult: " + insertResult);
 		
+		
+		JdbcUtil.close(conn);
 		return "/WEB-INF/board/redirectAllBoardView.jsp";
 	}
 

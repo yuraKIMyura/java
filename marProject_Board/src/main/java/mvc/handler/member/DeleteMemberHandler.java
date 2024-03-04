@@ -12,9 +12,10 @@ import mvjsp.board.dao.BoardDao;
 import mvjsp.board.dao.MemberDao;
 import mvjsp.board.model.Board;
 import mvjsp.board.model.Member;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
-public class DeleteHandler implements CommandHandler{
+public class DeleteMemberHandler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -29,6 +30,7 @@ public class DeleteHandler implements CommandHandler{
 		int deleteResult = memberDao.delete(conn, id);
 		System.out.println(deleteResult);
 				
+		JdbcUtil.close(conn);
 		return "/WEB-INF/member/loginForm.jsp";
 		
 	}

@@ -33,6 +33,8 @@ public class LoginFormHandler implements CommandHandler{
 		req.setAttribute("email", email);
 		req.setAttribute("id", id);
 		
+		
+		
 		return "/WEB-INF/member/loginForm.jsp";
 	}
 

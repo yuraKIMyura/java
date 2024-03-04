@@ -94,9 +94,10 @@
             <tr>
                <td> <a href="myBoardView.do" style="color: black;">내가 쓴 글</a></td>
             </tr>
-            <tr>
-              <td>내가 쓴 댓글</td>
+                        <tr>
+              <td>내가 추천한 글(empty)</td>
             </tr>
+            
           </table>
         </div><!--첫째줄 첫번째 요소-->
         
@@ -143,7 +144,7 @@
             color: white;
           ">수정</a>
           &nbsp;
-          <a class="btn btn-lg" onclick='location.href="delete.do?id=${member.id}"' role="button" style="
+          <a class="btn btn-lg" onclick='location.href="deleteMember.do?id=${member.id}"' role="button" style="
             background-color: #183a1d;
             border: none;
             color: white;

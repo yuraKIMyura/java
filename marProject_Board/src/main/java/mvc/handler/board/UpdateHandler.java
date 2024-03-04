@@ -12,6 +12,7 @@ import mvjsp.board.dao.BoardDao;
 import mvjsp.board.dao.MemberDao;
 import mvjsp.board.model.Board;
 import mvjsp.board.model.Member;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
 public class UpdateHandler implements CommandHandler{
@@ -38,7 +39,9 @@ public class UpdateHandler implements CommandHandler{
 		int boardno = board.getBoardno();
 		req.setAttribute("boardno", boardno);
 		req.setAttribute("hits", 2);
-				
+			
+		
+		JdbcUtil.close(conn);
 		return "/WEB-INF/board/redirectReadView.jsp";
 		
 	}

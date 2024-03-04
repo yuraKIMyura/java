@@ -12,6 +12,7 @@ import mvjsp.board.dao.BoardDao;
 import mvjsp.board.dao.MemberDao;
 import mvjsp.board.model.Board;
 import mvjsp.board.model.Member;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
 public class UpdateFormHandler implements CommandHandler{
@@ -27,7 +28,8 @@ public class UpdateFormHandler implements CommandHandler{
 		
 		Board board = boardDao.selectOneArticle(conn, boardno);
 		req.setAttribute("board", board);
-				
+		
+		JdbcUtil.close(conn);
 		return "/WEB-INF/board/updateForm.jsp";
 		
 	}

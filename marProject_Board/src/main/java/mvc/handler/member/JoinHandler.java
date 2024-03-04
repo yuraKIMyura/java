@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.command.CommandHandler;
 import mvjsp.board.dao.MemberDao;
 import mvjsp.board.model.Member;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
 public class JoinHandler implements CommandHandler{
@@ -28,6 +29,8 @@ public class JoinHandler implements CommandHandler{
 
 		Member member = new Member(id, email, name, question, answer);
 		dao.insert(conn, member);
+		
+		JdbcUtil.close(conn);
 		
 		return "/WEB-INF/member/loginForm.jsp";
 	}

@@ -232,7 +232,9 @@ public class BoardDao {
 		    
 		    } catch(Exception e) {
 		        e.printStackTrace();
-		    } 
+		    } finally {
+		    }
+
 			return 0;
 	}
 	
@@ -250,7 +252,8 @@ public class BoardDao {
 	    
 	    } catch(Exception e) {
 	        e.printStackTrace();
-	    } 
+	    } finally {
+	    }
 		return 0;
 	}
 
@@ -266,7 +269,8 @@ public class BoardDao {
 	    
 	    } catch(Exception e) {
 	        e.printStackTrace();
-	    } 
+	    } finally {
+	    }
 		return 0;
 	}
 
@@ -279,6 +283,7 @@ public class BoardDao {
 	        return rowsUpdated;
 	    } catch (SQLException e) {
 	        e.printStackTrace();
+	    }finally {
 	    }
 
 	    return 0;
@@ -295,6 +300,7 @@ public class BoardDao {
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
+	    }finally {
 	    }
 
 	    return 0; 

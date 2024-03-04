@@ -12,6 +12,7 @@ import mvjsp.board.dao.MemberDao;
 import mvjsp.board.dao.RecommendDao;
 import mvjsp.board.model.Board;
 import mvjsp.board.model.Member;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
 public class MyBoardViewHandler implements CommandHandler{
@@ -39,7 +40,8 @@ public class MyBoardViewHandler implements CommandHandler{
 		
 		req.setAttribute("myList", myList);
 		req.setAttribute("id", id);
-				
+		
+		JdbcUtil.close(conn);
 		return "/WEB-INF/board/myBoardView.jsp";
 	}
 

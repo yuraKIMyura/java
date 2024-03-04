@@ -12,6 +12,7 @@ import mvjsp.board.dao.BoardDao;
 import mvjsp.board.dao.MemberDao;
 import mvjsp.board.model.Board;
 import mvjsp.board.model.Member;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
 public class ReadInfoHandler implements CommandHandler{
@@ -30,6 +31,9 @@ public class ReadInfoHandler implements CommandHandler{
 		Member member = memberDao.searchById(conn, id);
 		req.setAttribute("member", member);
 				
+
+		JdbcUtil.close(conn);
+		
 		return "/WEB-INF/member/readInfoView.jsp";
 		
 	}

@@ -90,9 +90,10 @@
             <tr>
                <td> <a href="myBoardView.do" style="color: black;">내가 쓴 글</a></td>
             </tr>
-            <tr>
-              <td>내가 쓴 댓글</td>
+                   <tr>
+              <td>내가 추천한 글(empty)</td>
             </tr>
+       
           </table>
         </div><!--첫째줄 첫번째 요소-->
         

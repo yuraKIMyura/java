@@ -62,7 +62,9 @@ public class RecommendDao {
 		    
 		    } catch(Exception e) {
 		        e.printStackTrace();
-		    } 
+		    } finally {
+
+		    }
 			return 0;
 	}
 	
@@ -80,7 +82,10 @@ public class RecommendDao {
 	    
 	    } catch(Exception e) {
 	        e.printStackTrace();
-	    } 
+	    } finally {
+	        JdbcUtil.close(conn);
+
+	    }
 		return 0;
 	}
 	
@@ -132,6 +137,7 @@ public class RecommendDao {
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
+
 		}
 		return popularList;
 
@@ -155,6 +161,7 @@ public class RecommendDao {
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
+
 		}
 		return bestList;
 
@@ -178,6 +185,7 @@ public class RecommendDao {
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
+
 		}
 		return anonymousList;
 	}//method
@@ -200,6 +208,7 @@ public class RecommendDao {
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
+
 		}
 		return freeList;
 	}//method
@@ -221,6 +230,7 @@ public class RecommendDao {
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
+
 		}
 		return allList;
 	}//method
@@ -243,6 +253,7 @@ public class RecommendDao {
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
+
 		}
 		return myList;
 	}//method
@@ -266,6 +277,7 @@ public class RecommendDao {
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
+
 		}
 		return article;
 	}
@@ -287,6 +299,7 @@ public class RecommendDao {
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
+
 		}
 		return entireList;
 	}//method
@@ -308,7 +321,9 @@ public class RecommendDao {
 	    
 	    } catch(Exception e) {
 	        e.printStackTrace();
-	    } 
+	    } finally {
+
+	    }
 		return 0;
 	}
 
@@ -338,6 +353,8 @@ public class RecommendDao {
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
+	    }finally {
+
 	    }
 
 	    return 0;

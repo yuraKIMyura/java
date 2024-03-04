@@ -90,8 +90,9 @@
                <td> <a href="myBoardView.do" style="color: black;">내가 쓴 글</a></td>
             </tr>
             <tr>
-              <td>내가 쓴 댓글</td>
+              <td>내가 추천한 글(empty)</td>
             </tr>
+           
           </table>
      
           
@@ -143,7 +144,7 @@
 
 
 
-<%--     <!--첫째줄-->
+<%--      <!--첫째줄-->
     <div class="container col-lg-11" style="background-color: #fefbe9; padding-bottom:5rem">
 
       <div class="row">
@@ -220,10 +221,10 @@
           </table>
         </div><!--첫째줄 첫번째 요소-->
       </div>
-    </div><!--첫째줄--> --%>
+    </div><!--첫째줄--> 
 
 
-<%--     <!--둘째줄-->
+     <!--둘째줄-->
     <div class="container col-lg-11" style="background-color: #fefbe9; padding-bottom:5rem">
 
       <div class="row">
@@ -290,8 +291,8 @@
           </table>
         </div><!--둘째줄 첫번째 요소-->
       </div>
-    </div><!--둘째줄-->
- --%>
+    </div><!--둘째줄--> --%>
+
 
   </main>
 

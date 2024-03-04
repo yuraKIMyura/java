@@ -12,6 +12,7 @@ import mvjsp.board.dao.BoardDao;
 import mvjsp.board.dao.MemberDao;
 import mvjsp.board.model.Board;
 import mvjsp.board.model.Member;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
 public class DeleteHandler implements CommandHandler{
@@ -30,6 +31,8 @@ public class DeleteHandler implements CommandHandler{
 			
 		int deleteResult = boardDao.delete(conn, boardno);
 		System.out.println(deleteResult);
+		
+		JdbcUtil.close(conn);
 				
 		return "/WEB-INF/board/redirectAllBoardView.jsp";
 		

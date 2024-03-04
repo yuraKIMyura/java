@@ -13,6 +13,7 @@ import mvjsp.board.dao.MemberDao;
 import mvjsp.board.dao.RecommendDao;
 import mvjsp.board.model.Board;
 import mvjsp.board.model.Member;
+import mvjsp.jdbc.JdbcUtil;
 import mvjsp.jdbc.connection.ConnectionProvider;
 
 public class AllBoardViewHandler implements CommandHandler{
@@ -35,21 +36,27 @@ public class AllBoardViewHandler implements CommandHandler{
 		for (Board board : entireList) {
 			
 			int memberno = board.getMemberno();
-			String writerId = memberDao.selectOne(conn, memberno).getId();
+			Member member = memberDao.selectOne(conn, memberno);
+			String writerId = member.getId();
+			int role = member.getRole();
 			
 			int boardno = board.getBoardno();
 			int recommends = recommendDao.countRecommends(conn, boardno);
 			board.setRecommends(recommends);
 			
-			if(writerId.equals(id)) {
-				board.setWriter("😎나");
-			} else if(board.getType().equals("익명")) {
-				board.setWriter("익명의 작성자");
-			} else {
-				board.setWriter(writerId);
-			}
+			
+	
+				if(writerId.equals(id)) {
+					board.setWriter("😎나");
+				} else if(board.getType().equals("익명")) {
+					board.setWriter("익명의 작성자");
+				} else {
+					board.setWriter(writerId);
+				}
+			
 		}
 		
+		JdbcUtil.close(conn);
 		req.setAttribute("entireList", entireList);
 				
 		return "/WEB-INF/board/allBoardView.jsp";

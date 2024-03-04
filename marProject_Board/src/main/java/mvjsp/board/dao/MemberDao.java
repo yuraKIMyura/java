@@ -107,43 +107,40 @@ public class MemberDao {
 	}
 	
 	public int insert(Connection conn, Member member) {
-		String sql = "INSERT INTO member(memberno, id, email, name, question, answer) VALUES (member_seq.NEXTVAL, ?, ?, ?, ?, ?)";
+	    String sql = "INSERT INTO member(memberno, id, email, name, question, answer) VALUES (member_seq.NEXTVAL, ?, ?, ?, ?, ?)";
 	    try ( 
 	        PreparedStatement pstmt = conn.prepareStatement(sql);            
 	    ) {
-	        
-	        // 쿼리 실행
-	    	pstmt.setString(1, member.getId());
-	    	pstmt.setString(2, member.getEmail());
-	    	pstmt.setString(3, member.getName());
-	    	pstmt.setString(4,  member.getQuestion());
-	    	pstmt.setString(5, member.getAnswer());
+	        pstmt.setString(1, member.getId());
+	        pstmt.setString(2, member.getEmail());
+	        pstmt.setString(3, member.getName());
+	        pstmt.setString(4, member.getQuestion());
+	        pstmt.setString(5, member.getAnswer());
 	        return pstmt.executeUpdate();
-	    
 	    } catch(Exception e) {
 	        e.printStackTrace();
-	    } 
-		return 0;
+	    } finally {
+	    }
+	    return 0;
 	}
 	
 	public int update(Connection conn, Member member) {
-		String sql = "UPDATE member SET email = ?, name = ?, question = ?, answer = ? WHERE id = ?";
-	    try ( 
-	        PreparedStatement pstmt = conn.prepareStatement(sql);            
+	    String sql = "UPDATE member SET email = ?, name = ?, question = ?, answer = ? WHERE id = ?";
+	    try (
+	        PreparedStatement pstmt = conn.prepareStatement(sql);
 	    ) {
-	        
-	        // 쿼리 실행
-	    	pstmt.setString(5, member.getId());
-	    	pstmt.setString(1, member.getEmail());
-	    	pstmt.setString(2, member.getName());
-	    	pstmt.setString(3, member.getQuestion());
-	    	pstmt.setString(4, member.getAnswer());
+	        pstmt.setString(1, member.getEmail());
+	        pstmt.setString(2, member.getName());
+	        pstmt.setString(3, member.getQuestion());
+	        pstmt.setString(4, member.getAnswer());
+	        pstmt.setString(5, member.getId());
 	        return pstmt.executeUpdate();
-	    
-	    } catch(Exception e) {
+
+	    } catch (Exception e) {
 	        e.printStackTrace();
-	    } 
-		return 0;
+	    } finally {
+	    }
+	    return 0;
 	}
 
 
@@ -171,19 +168,17 @@ public class MemberDao {
 
 	
 	public int delete(Connection conn, String id) {
-		String sql = "DELETE FROM member WHERE id = ?";
-	    try ( 
-	        PreparedStatement pstmt = conn.prepareStatement(sql);            
+	    String sql = "DELETE FROM member WHERE id = ?";
+	    try (
+	        PreparedStatement pstmt = conn.prepareStatement(sql);
 	    ) {
-	        
-	        // 쿼리 실행
-	    	pstmt.setString(1, id);
+	        pstmt.setString(1, id);
 	        return pstmt.executeUpdate();
-	    
-	    } catch(Exception e) {
+	    } catch (Exception e) {
 	        e.printStackTrace();
-	    } 
-		return 0;
+	    } finally {
+	    }
+	    return 0;
 	}
 	
 }//class
