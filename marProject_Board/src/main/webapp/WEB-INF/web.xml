@@ -49,6 +49,8 @@
 
 	<filter-mapping>
 		<filter-name>LoginCheck</filter-name>
+		
+		
 		<url-pattern>/allBoardView.do</url-pattern>
 		<url-pattern>/deleteMember.do</url-pattern>
 		<url-pattern>/readView.do</url-pattern>
