@@ -49,11 +49,23 @@
 
 	<filter-mapping>
 		<filter-name>LoginCheck</filter-name>
-		<url-pattern>/board/*</url-pattern>
-		<url-pattern>/member/*</url-pattern>
-		<!--board 밑에 있는 모든 내용에 대해 적용한다 -->
+		<url-pattern>/allBoardView.do</url-pattern>
+		<url-pattern>/deleteMember.do</url-pattern>
+		<url-pattern>/readView.do</url-pattern>
+		<url-pattern>/mainView.do</url-pattern>
+		<url-pattern>/readInfoView.do</url-pattern>
+		<url-pattern>/updateInfoForm.do</url-pattern>
+		<url-pattern>/updateInfo.do</url-pattern>
+		<url-pattern>/writeForm.do</url-pattern>
+		<url-pattern>/write.do</url-pattern>
+		<url-pattern>/myBoardView.do</url-pattern>
+		<url-pattern>/updateForm.do</url-pattern>
+		<url-pattern>/update.do</url-pattern>
+		<url-pattern>/delete.do</url-pattern>
+		<url-pattern>/recommend.do</url-pattern>
+		
 	</filter-mapping>
-	
+
 	
 	<servlet>
 		<servlet-name>DBCPInit</servlet-name>

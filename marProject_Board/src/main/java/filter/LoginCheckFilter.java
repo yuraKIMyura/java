@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
  * Servlet Filter implementation class LoginCheckFilter
  */
 
+
 public class LoginCheckFilter extends HttpFilter implements Filter {
        
     /**
@@ -41,17 +42,20 @@ public class LoginCheckFilter extends HttpFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession(false);
-		
+
+	
 		boolean login = false;
+
 		if (session!=null) {
 			if (session.getAttribute("authenticatedUser") != null) {
 				login = true;
+				System.out.println("logincheckfilter: logged in " + login);
 			}
 		}
 		if(login) {
 			chain.doFilter(request, response);
 		} else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("loginForm.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/member/loginForm.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

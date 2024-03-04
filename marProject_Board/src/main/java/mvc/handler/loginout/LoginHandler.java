@@ -86,6 +86,7 @@ public class LoginHandler implements CommandHandler{
 			HttpSession session = req.getSession();
 			session.setAttribute("authenticatedUser", id);
 			req.setAttribute("id",id);
+			System.out.println("session: "+session.getAttribute("authenticatedUser"));
 			return "/WEB-INF/board/postLoginView.jsp";
 		}else {
 			return "/WEB-INF/member/loginForm.jsp";
