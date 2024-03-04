@@ -180,13 +180,15 @@
 
            
             </table>
-          </div> -->
+          </div> 
 
 
          <div class="input-group" style="padding-bottom:2rem;">
             <textarea class="form-control"></textarea>
             <span class="input-group-text" style="background-color: #ed7966; border: none; color:#fefbe9">등록</span>
           </div>
+          
+          -->
 
           <a class="btn btn-lg" href="allBoardView.do" role="button" style="
             background-color: #ed7966;

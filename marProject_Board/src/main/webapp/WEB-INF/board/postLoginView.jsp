@@ -120,7 +120,7 @@
                       background-color: #f6c453;
                       border: none;
                       color: white;
-                    " ">전체게시판 더보기 &raquo;</a>
+                    " >전체게시판 더보기 &raquo;</a>
           </p>
         </div><!--0째줄 두번째 요소-->
         <!--0째줄 세번째 요소-->

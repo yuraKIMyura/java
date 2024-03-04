@@ -16,8 +16,8 @@
 	response.addCookie(cookie);
 	%>
 	
-	<%=cookie.getName()%> </br>
-	<%=cookie.getValue()%> </br>
+	<%=cookie.getName()%> 
+	<%=cookie.getValue()%>
 
 </body>
 </html>
