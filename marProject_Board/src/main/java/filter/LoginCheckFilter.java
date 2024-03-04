@@ -43,18 +43,21 @@ public class LoginCheckFilter extends HttpFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession(false);
 
-	
+		System.out.println("filter session: "+session.getAttribute("authenticatedUser"));
+
 		boolean login = false;
 
 		if (session!=null) {
 			if (session.getAttribute("authenticatedUser") != null) {
 				login = true;
-				System.out.println("logincheckfilter: logged in " + login);
+				System.out.println("login check filter: logged in " + login);
 			}
 		}
 		if(login) {
 			chain.doFilter(request, response);
 		} else {
+			System.out.println("login check filter: logged in " + login);
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/member/loginForm.jsp");
 			dispatcher.forward(request, response);
 		}

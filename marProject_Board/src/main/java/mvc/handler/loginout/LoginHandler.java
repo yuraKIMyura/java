@@ -64,27 +64,27 @@ public class LoginHandler implements CommandHandler{
 		
 		req.setAttribute("allList", allList);
 		
-		ArrayList<Board> popularList = boardDao.selectPopular(conn);
-		req.setAttribute("popularList", popularList);
-		
-		ArrayList<Board> bestList = boardDao.selectBest(conn);
-		req.setAttribute("bestList", bestList);
-		
-		ArrayList<Board> anonymousList = boardDao.selectAnonymous(conn);
-		req.setAttribute("anonymousList", anonymousList);
-		
-		ArrayList<Board> freeList = boardDao.selectFree(conn);
-		req.setAttribute("freeList", freeList);
+//		ArrayList<Board> popularList = boardDao.selectPopular(conn);
+//		req.setAttribute("popularList", popularList);
+//		
+//		ArrayList<Board> bestList = boardDao.selectBest(conn);
+//		req.setAttribute("bestList", bestList);
+//		
+//		ArrayList<Board> anonymousList = boardDao.selectAnonymous(conn);
+//		req.setAttribute("anonymousList", anonymousList);
+//		
+//		ArrayList<Board> freeList = boardDao.selectFree(conn);
+//		req.setAttribute("freeList", freeList);
 	
 		
 		boolean isValidUser = memberDao.authenticateUser(conn, id, email);
 		
-		
 		JdbcUtil.close(conn);
-		
+						
 		if(isValidUser) {
 			HttpSession session = req.getSession();
 			session.setAttribute("authenticatedUser", id);
+			//postLoginView에 보내는 정보
 			req.setAttribute("id",id);
 			System.out.println("session: "+session.getAttribute("authenticatedUser"));
 			return "/WEB-INF/board/postLoginView.jsp";
