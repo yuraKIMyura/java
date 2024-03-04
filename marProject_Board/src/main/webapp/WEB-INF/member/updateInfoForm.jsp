@@ -102,7 +102,7 @@
 
           <h2 class="display-6" style="color: #183a1d; font-weight: bold">회원정보 수정</h2>
 
-          <form method="post" action="updateInfo.do">
+          <form method="po   st" action="updateInfo.do">
           <div style="padding-top: 2rem; padding-bottom: 2rem;">
           
 
