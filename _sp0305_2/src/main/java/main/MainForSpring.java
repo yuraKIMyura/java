@@ -11,6 +11,8 @@ import assembler.Assembler;
 import config.AppCtx;
 import spring.ChangePasswordService;
 import spring.DuplicateMemberException;
+import spring.MemberInfoPrinter;
+import spring.MemberListPrinter;
 import spring.MemberNotFoundException;
 import spring.MemberRegisterService;
 import spring.RegisterRequest;
@@ -20,7 +22,7 @@ public class MainForSpring {
 	
 	private static ApplicationContext ctx = null;
 	
-	private static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 		
 		ctx = new AnnotationConfigApplicationContext(AppCtx.class);
 		
@@ -33,11 +35,18 @@ public class MainForSpring {
 				System.out.println("종료");
 				break;
 			}
+			
 			if (command.startsWith("new ")){
 				processNewCommand(command.split(" "));
 				continue;
 			} else if (command.startsWith("change ")) {
 				processChangeCommand(command.split(" "));
+				continue;
+			} else if (command.startsWith("list")) {
+				processListCommand();
+				continue;
+			} else if (command.startsWith("info ")) {
+				processInfoCommand(command.split(" "));
 				continue;
 			}
 			printHelp();
@@ -96,4 +105,20 @@ public class MainForSpring {
 		System.out.println();
 	}//method: printHelp
 	
+	//0307추가: processListCommand
+	private static void processListCommand() {
+		System.out.println("[MainForSpring] processListCommand() 실행 시작");
+		MemberListPrinter listPrinter = ctx.getBean("listPrinter", MemberListPrinter.class);
+		System.out.println("[MainForSpring] ctx.getBean 결과: " + listPrinter.toString());
+		listPrinter.printAll();
+	}//method: processListCommand
+	
+	private static void processInfoCommand(String[] arg) {
+		if(arg.length!=2) {
+			printHelp();
+			return;
+		}
+		MemberInfoPrinter infoPrinter = ctx.getBean("infoPrinter", MemberInfoPrinter.class);
+		infoPrinter.printMemberInfo(arg[1]);
+	}
 }
