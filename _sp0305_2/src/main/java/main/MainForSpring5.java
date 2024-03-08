@@ -10,6 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import assembler.Assembler;
 import config.AppConfImport;
 import config.AppCtx;
+import config.AppCtxNoMemberPrinterBean;
 import spring.ChangePasswordService;
 import spring.DuplicateMemberException;
 import spring.MemberInfoPrinter;
@@ -20,14 +21,13 @@ import spring.RegisterRequest;
 import spring.VersionPrinter;
 import spring.WrongIdPasswordException;
 
-public class MainForSpring {
+public class MainForSpring5 {
 	
 	private static ApplicationContext ctx = null;
 	
 	public static void main(String[] args) throws IOException {
 		
-		ctx = new AnnotationConfigApplicationContext(AppCtx.class);
-		//ctx = new AnnotationConfigApplicationContext(AppConfImport.class);
+		ctx = new AnnotationConfigApplicationContext(AppCtxNoMemberPrinterBean.class);
 
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

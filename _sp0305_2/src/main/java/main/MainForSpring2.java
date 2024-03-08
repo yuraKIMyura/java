@@ -8,7 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import assembler.Assembler;
-import config.AppConfImport;
+import config.AppConf1;
+import config.AppConf2;
 import config.AppCtx;
 import spring.ChangePasswordService;
 import spring.DuplicateMemberException;
@@ -20,16 +21,15 @@ import spring.RegisterRequest;
 import spring.VersionPrinter;
 import spring.WrongIdPasswordException;
 
-public class MainForSpring {
+public class MainForSpring2 {
 	
 	private static ApplicationContext ctx = null;
 	
 	public static void main(String[] args) throws IOException {
 		
-		ctx = new AnnotationConfigApplicationContext(AppCtx.class);
-		//ctx = new AnnotationConfigApplicationContext(AppConfImport.class);
-
+		ctx = new AnnotationConfigApplicationContext(AppConf1.class, AppConf2.class);
 		
+
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		while(true) {
 			System.out.println("명령어를 입력: ");
@@ -45,7 +45,7 @@ public class MainForSpring {
 			} else if (command.startsWith("change ")) {
 				processChangeCommand(command.split(" "));
 				continue;
-			} else if (command.equals("list")) {
+			} else if (command.startsWith("list")) {
 				processListCommand();
 				continue;
 			} else if (command.startsWith("info ")) {
@@ -115,9 +115,9 @@ public class MainForSpring {
 	
 	//0307추가: processListCommand
 	private static void processListCommand() {
-		//System.out.println("[MainForSpring] processListCommand() 실행 시작");
+		System.out.println("[MainForSpring] processListCommand() 실행 시작");
 		MemberListPrinter listPrinter = ctx.getBean("listPrinter", MemberListPrinter.class);
-		//System.out.println("[MainForSpring] ctx.getBean 결과: " + listPrinter.toString());
+		System.out.println("[MainForSpring] ctx.getBean 결과: " + listPrinter.toString());
 		listPrinter.printAll();
 	}//method: processListCommand
 	

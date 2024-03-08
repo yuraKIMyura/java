@@ -1,5 +1,6 @@
 package config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,44 +13,35 @@ import spring.MemberRegisterService;
 import spring.VersionPrinter;
 
 @Configuration
-public class AppCtx {
+public class AppConf2 {
 
-	@Bean
-	public MemberDao memberDao() {
-		return new MemberDao();
-	}
+	@Autowired
+	private MemberDao memberDao;
+	@Autowired
+	private MemberPrinter memberPrinter;
 	
 	@Bean
 	public MemberRegisterService memberRegSvc() {
-		return new MemberRegisterService(memberDao());
+		return new MemberRegisterService(memberDao);
 	}
 	
 	@Bean
 	public ChangePasswordService changePwdSvc() {
 		ChangePasswordService pwdSvc = new ChangePasswordService();
-		pwdSvc.setMemberDao(memberDao());
+		pwdSvc.setMemberDao(memberDao);
 		return pwdSvc;
 	}
 	
-	//0307추가: MemberPrinter, MemberListPrinter, MemberInfoPrinter, VersionPrinter
-	//이전에는 Bean이 아니라 Assembler로 했는데, 이 함수들 추가하면서 나머지도 BEAN으로 관리
-	
-	@Bean
-	public MemberPrinter memberPrinter() {
-		return new MemberPrinter();
-	}
-	
-
 	@Bean
 	public MemberListPrinter listPrinter() {
-		return new MemberListPrinter(memberDao(), memberPrinter());
+		return new MemberListPrinter(memberDao, memberPrinter);
 	}
 	
 	@Bean
 	public MemberInfoPrinter infoPrinter() {
 		MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
-		infoPrinter.setMemberDao(memberDao());
-		infoPrinter.setPrinter(memberPrinter());
+		infoPrinter.setMemberDao(memberDao);
+		infoPrinter.setPrinter(memberPrinter);
 		return infoPrinter;
 	}
 	
@@ -61,8 +53,5 @@ public class AppCtx {
 		return versionPrinter;
 	}
 	
-	
-	
-	
-	
 }
+

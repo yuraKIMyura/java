@@ -20,16 +20,15 @@ import spring.RegisterRequest;
 import spring.VersionPrinter;
 import spring.WrongIdPasswordException;
 
-public class MainForSpring {
+public class MainForSpring4 {
 	
 	private static ApplicationContext ctx = null;
 	
 	public static void main(String[] args) throws IOException {
 		
-		ctx = new AnnotationConfigApplicationContext(AppCtx.class);
-		//ctx = new AnnotationConfigApplicationContext(AppConfImport.class);
+		//ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+		ctx = new AnnotationConfigApplicationContext(AppConfImport.class);
 
-		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		while(true) {
 			System.out.println("명령어를 입력: ");
@@ -45,7 +44,7 @@ public class MainForSpring {
 			} else if (command.startsWith("change ")) {
 				processChangeCommand(command.split(" "));
 				continue;
-			} else if (command.equals("list")) {
+			} else if (command.startsWith("list")) {
 				processListCommand();
 				continue;
 			} else if (command.startsWith("info ")) {
@@ -133,5 +132,7 @@ public class MainForSpring {
 	private static void processVersionCommand() {
 		VersionPrinter versionPrinter = ctx.getBean("versionPrinter", VersionPrinter.class);
 		versionPrinter.print();
-	}
-}
+	}//method: processVersionCommand
+	
+	
+}//class
