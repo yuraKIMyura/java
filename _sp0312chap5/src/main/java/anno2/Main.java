@@ -43,6 +43,7 @@ public class Main {
 		for (Annotation anno : annotations) {
 			MyAnno myAnno = (MyAnno) anno;
 			System.out.println(myAnno.value());
+			/**ClassCastException은 **/
 		}//for
 		
 	}//main

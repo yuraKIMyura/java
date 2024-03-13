@@ -17,14 +17,16 @@ import spring.VersionPrinter;
 import spring2.MemberRegisterService;
 
 @Configuration
-@ComponentScan(basePackages = {"spring", "spring2"}, excludeFilters = @Filter(type = FilterType.ANNOTATION, classes= {NoProduct.class, ManualBean.class}))
-@ComponentScan(basePackages = {"spring"}, excludeFilters = @Filter(type=FilterType.REGEX, pattern="spring\\..*Dao"))
+//ComponentScan이 두 개라서 excludeFilters 적용이 제대로 안 되고 있었던 것임!
+//@ComponentScan(basePackages = {"spring", "spring2"})
+//@ComponentScan(basePackages = {"spring", "spring2"}, excludeFilters = @Filter(type = FilterType.ANNOTATION, classes= {NoProduct.class, ManualBean.class}))
+@ComponentScan(basePackages = {"spring", "spring2"}, excludeFilters = @Filter(type=FilterType.REGEX, pattern = "spring\\..*Dao" ))
 public class AppCtx {
 
-	@Bean
-	public MemberDao memberDao() {
-		return new MemberDao();
-	}
+//	@Bean
+//	public MemberDao memberDao() {
+//		return new MemberDao();
+//	}
 
 //	@Bean
 //	public MemberRegisterService memberRegSvc() {

@@ -60,6 +60,7 @@ public class MainForSpring {
 			return;
 		}
 		MemberRegisterService regSvc = 
+				//ctx.getBean("memberRegisterService", MemberRegisterService.class);
 				ctx.getBean("memberRegSvc", MemberRegisterService.class);
 		RegisterRequest req = new RegisterRequest();
 		req.setEmail(arg[1]);

@@ -12,6 +12,7 @@ import spring.MemberDao;
 import spring.RegisterRequest;
 
 @ManualBean
+//@Component
 @Component("memberRegSvc")
 public class MemberRegisterService {
 
