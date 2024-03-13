@@ -3,19 +3,22 @@ package config;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 
 import spring.ChangePasswordService;
 import spring.MemberDao;
 import spring.MemberInfoPrinter;
 import spring.MemberListPrinter;
 import spring.MemberPrinter;
-import spring.MemberRegisterService;
 import spring.MemberSummaryPrinter;
 import spring.VersionPrinter;
+import spring2.MemberRegisterService;
 
 @Configuration
-@ComponentScan(basePackages = {"spring"})
+@ComponentScan(basePackages = {"spring", "spring2"}, excludeFilters = @Filter(type = FilterType.ANNOTATION, classes= {NoProduct.class, ManualBean.class}))
+@ComponentScan(basePackages = {"spring"}, excludeFilters = @Filter(type=FilterType.REGEX, pattern="spring\\..*Dao"))
 public class AppCtx {
 
 	@Bean
@@ -23,10 +26,10 @@ public class AppCtx {
 		return new MemberDao();
 	}
 
-	@Bean
-	public MemberRegisterService memberRegSvc() {
-		return new MemberRegisterService();
-	}
+//	@Bean
+//	public MemberRegisterService memberRegSvc() {
+//		return new MemberRegisterService();
+//	}
 
 	/**component로 처리할 예정**/
 //	@Bean
