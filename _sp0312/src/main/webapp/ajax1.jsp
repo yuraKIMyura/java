@@ -23,11 +23,32 @@
 				url: 'GetTodos',
 				method: 'GET',
 				success: function(data) {
-					console.log(data);
+					addItem(data);
 				}
 			});
         }
        );
+      
+      function addItem(data){
+    	  const list = $('#todoList');
+    	  
+    	  const item = $('<li></li>').text(data);
+    	  const removeButton = $('<button></button>').text('Remove');
+    	  removeButton.click(function() {
+    		  $.ajax({
+    			  url: 'RemoveTodo',
+    			  method:'POST',
+    			  data:{
+    				  text: data
+    			  },
+    			  success : function(){
+    				  item.remove();
+    			  }
+    		  });
+    	  });
+    	  item.append(removeButton);
+    	  list.append(item);
+   	 }
      </script>
 
 

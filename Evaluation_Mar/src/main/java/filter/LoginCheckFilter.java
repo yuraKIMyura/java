@@ -45,7 +45,7 @@ public class LoginCheckFilter extends HttpFilter implements Filter {
 
 		
 	    String requestURI = httpRequest.getRequestURI();
-	    if (requestURI.endsWith("/loginForm.jsp") || requestURI.endsWith("/login.do")) {
+	    if (requestURI.endsWith("/loginForm.jsp") || requestURI.endsWith("/joinMemberForm.css") || requestURI.endsWith("/login.do") || requestURI.endsWith("/joinForm.do") || requestURI.endsWith("/join.do")) {
 	        chain.doFilter(request, response);
 	        return;
 	    }

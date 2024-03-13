@@ -22,11 +22,11 @@
 <body class="text-center">
   <div class="background">
 
-    <h1 class="h2 mb-3 font-weight-bold" style="padding-bottom: 2rem">만나서 반가워요!</h1>
+    <h3 class="h2 mb-3 font-weight-bold" style="padding-bottom: 2rem">만나서 반가워요!</h3>
 
     <form class="form-signin" action="join.do" method="post">
 
-      <img class="mb-4" src="${pageContext.request.contextPath}/resources/img/chat.png" alt="logo" width="150" height="150">
+      <img class="mb-4" src="${pageContext.request.contextPath}/resources/img/chat.png" alt="logo" width="100" height="100">
       <h1 class="h4 mb-3 font-weight-bold" style="padding-bottom: 2rem">BLABBER</h1>
 
       <div class="form-group">
