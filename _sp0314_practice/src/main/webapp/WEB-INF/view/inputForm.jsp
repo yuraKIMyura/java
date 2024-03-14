@@ -8,12 +8,11 @@
 </head>
 <body>
 
-<!-- form action에 지정된 이름은 controller의 URI template이다. -->
 <form action="result">
 
-<label> id <input type="text" name="id"> </label>
-<label> email <input type="text" name="email"> </label>
-<label> 입력 <input type="submit"></label>
+<label>이름 <input type="text" name="name"> </label>
+<label>생일 <input type="text" name="birthday"> </label>
+<label>제출 <input type="submit"> </label>
 </form>
 
 </body>

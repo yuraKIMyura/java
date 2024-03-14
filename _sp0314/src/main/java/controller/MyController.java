@@ -2,14 +2,19 @@ package controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import DTO.LoginRequest;
+import dto.LoginRequest;
+import service.GetMemberNumService;
 
 @Controller
 public class MyController {
+	
+	@Autowired
+	private GetMemberNumService getMemberNumService; 
 
     /**이게 href링크와 action에서 호출하는 URI template이다.**/
 	@GetMapping("/")
@@ -44,6 +49,7 @@ public class MyController {
 	public String result(LoginRequest loginRequest) {
 		System.out.println(loginRequest.getId());
 		System.out.println(loginRequest.getEmail());
+		System.out.println(getMemberNumService.getNumRecords());
 		return "result";
 	}
 	
