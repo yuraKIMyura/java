@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import dto.LoginRequest;
@@ -45,7 +46,8 @@ public class MyController {
 	 * 3) @RequestParam type variableName을 controller method parameter로 전달해서 바로 쓰기 
 	 * **/
 	
-	@GetMapping("/result")
+	//@GetMapping("/result")
+	@PostMapping("/result")
 	public String result(LoginRequest loginRequest) {
 		System.out.println(loginRequest.getId());
 		System.out.println(loginRequest.getEmail());

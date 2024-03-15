@@ -10,6 +10,10 @@
 
 <h1>결과</h1>
 
+<h2>${loginRequst.id}</h2>
+<h2>${loginRequst.email}</h2>
+
+
 <a href="${pageContext.request.contextPath}/">메인페이지로</a>
 
 </body>
