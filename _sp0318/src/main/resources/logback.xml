@@ -12,3 +12,12 @@
 
 	<logger name="org.springframework.jdbc" level="DEBUG" />
 </configuration>
+
+
+
+<!-- logging framework for Spring -->
+
+<!-- Logging is essential for monitoring and troubleshooting applications, 
+as it provides valuable information about what the application is doing, 
+as well as any errors or unexpected behavior encountered during runtime. -->
+
