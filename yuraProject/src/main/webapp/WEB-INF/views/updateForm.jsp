@@ -11,26 +11,30 @@
 <body>
 <h1>유라프로젝트</h1>
 
-	<form action="register" method="post">
+	<form action="commitUpdate" method="post">
 		<table>
 			<tr>
+				<td> <input type="hidden" name="id" value="${member.id}"> </td>
+			</tr>
+		
+			<tr>
 				<th>이름</th>
-				<td> <input type="text" name="name"> </td>
+				<td> <input type="text" name="name" value="${member.name}">  </td>
 			</tr>
 			<tr>
 				<th>나이</th>
-				<td>  <input type="text" name="age"> </td>
+				<td>  <input type="text" name="age" value="${member.age}">  </td>
 			</tr>
 			<tr>
 				<th>메일</th>
-				<td>  <input type="text" name="email"> </td>
+				<td>  <input type="text" name="email" value="${member.email}">  </td>
 			</tr>
 			<tr>
 				<th>메모</th>
-				<td> <input type="text" name="memo"> </td>
+				<td> <input type="text" name="memo" value="${member.memo}">   </td>
 			</tr>
 			<tr>
-				<td colspan=2 align="right"> <button type="sumbit">등록</button> </td>
+				<td colspan=2 align="right"> <button type="submit">수정완료</button> </td>
 			</tr>					
 		</table>
 	</form>
@@ -45,7 +49,6 @@
 			<th>나이</th>
 			<th>메일</th>
 			<th>메모</th>
-			<th>Actions</th>						
 	</tr>
 <thead>
 <tbody>
@@ -56,10 +59,6 @@
         <td> ${member.age} </td>
         <td> ${member.email} </td>
         <td> ${member.memo} </td>
-			<td> 
-				<button onclick="location.href='/update?id=${member.id}'">수정</button> 
-				<button onclick="location.href='/delete?id=${member.id}'">삭제</button>
-			</td>												
 			</tr>
 		</c:forEach>
             </tbody>

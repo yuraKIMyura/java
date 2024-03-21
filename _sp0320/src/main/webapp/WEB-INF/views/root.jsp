@@ -8,5 +8,7 @@
 </head>
 <body>
 <h1>JSP 나온다</h1>
+<p>${str}</p>
+<p>${cnt}</p>
 </body>
 </html>
