@@ -1,8 +1,9 @@
-package com.yuraProject.yuraProject.dto;
+package com.sky.sp0320.dto;
 
 import java.time.LocalDateTime;
 
-import com.yuraProject.yuraProject.service.WrongIdPasswordException;
+import com.sky.sp0320.service.WrongIdPasswordException;
+
 
 public class Member {
 

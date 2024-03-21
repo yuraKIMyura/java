@@ -89,4 +89,9 @@ public class MemberDao {
 	public Collection<Member> selectAll() {
 		return null;
 	}
+	
+	public int count() {
+		return jdbcTemplate.queryForObject
+				("select count(*) from member", Integer.class);
+	}
 }

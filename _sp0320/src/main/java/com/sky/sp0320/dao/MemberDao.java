@@ -1,4 +1,4 @@
-package com.yuraProject.yuraProject.dao;
+package com.sky.sp0320.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,25 +7,21 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import com.yuraProject.yuraProject.dto.Member;
+import com.sky.sp0320.dto.Member;
 
 import lombok.ToString;
 
-@Component
-@ToString
+@Repository
 public class MemberDao {
 	
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
-	
-	public MemberDao(DataSource dataSource) {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
-	}
-
 
 	public Member selectByEmail(String email) {
 		List<Member> results = jdbcTemplate.query(
@@ -90,5 +86,10 @@ public class MemberDao {
 
 	public Collection<Member> selectAll() {
 		return null;
+	}
+	
+	public int count() {
+		return jdbcTemplate.queryForObject
+				("select count(*) from member", Integer.class);
 	}
 }
