@@ -8,10 +8,10 @@
 		<version>2.5.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sky</groupId>
-	<artifactId>sp0320</artifactId>
+	<groupId>com.yuraProject</groupId>
+	<artifactId>yuraProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sp0320</name>
+	<name>yuraProject</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
